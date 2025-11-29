@@ -1,17 +1,17 @@
 .left-side {
   background-color: #e8e8e8;
   height: 387px;
-
   margin-bottom: 20px;
   position: relative;
-
   background-image: url(../img/hero/mobile/hero_img-mobile.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   @media screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx),
     screen and (min-device-pixel-ratio: 2) {
     background-image: url('../img/hero/mobile/hero_img-mobile@2x.png');
-    background-size: cover;
   }
 
   span {
@@ -90,6 +90,7 @@
     padding-bottom: 192px;
     padding-left: 32px;
     padding-right: 32px;
+    height: 900px;
   }
 
   .hero-title {
@@ -132,7 +133,6 @@
     width: 704px;
     padding-top: 230px;
     padding-bottom: 192px;
-    height: 900px;
   }
 
   .hero-title {

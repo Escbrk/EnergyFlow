@@ -44,18 +44,25 @@ a {
 
 .block {
   border-radius: 30px;
+
+  @media screen and (min-width: 768px) {
+    border-radius: 50px;
+  }
 }
 
 .container {
   width: 100%;
-  max-width: calc(335px + 40px);
+  min-width: 320px;
+  max-width: 375px;
   padding-left: 20px;
   padding-right: 20px;
-  margin: 20px auto;
+  margin: 20px auto; /*!____________________________________________________ FIX IT*/
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
-    margin: 16px auto;
+    margin: 16px auto; /*!____________________________________________________ FIX IT*/
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   @media screen and (min-width: 1440px) {
