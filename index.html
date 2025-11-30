@@ -2,127 +2,253 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vanilla-app-template/favicon.svg" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>EnergyFlow</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <script type="module" crossorigin src="/vanilla-app-template/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/styles-DvPDDfy5.css">
+    <link rel="modulepreload" crossorigin href="/vanilla-app-template/assets/vendor-2s9xPmg-.js">
+    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/index-CNSZBbdY.css">
   </head>
   <body>
-    <header class="header">
+    <!-- <header class="header">
   <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="/vanilla-app-template/assets/sprite-E8vg0sBb.svg#logo"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
+    <a href="">energy.flow</a>
+
+    <nav class="tablet">
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Favorites</a></li>
+      </ul>
+
+      <ul>
+        <li>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noreferrer nofollow noopener"
+            >FB</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
+        <li>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer nofollow noopener"
+            >IG</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/?themeRefresh=1"
+            target="_blank"
+            rel="noreferrer nofollow noopener"
+            >YT</a
+          >
         </li>
       </ul>
     </nav>
+
+    <div class="mobile-menu">
+      <a href="">energy.flow</a>
+
+      <nav>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Favorites</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
-
-
+ -->
     <main>
-      <!-- Loads the specified .html file -->
-      <section class="vite-promo">
-  <div class="container">
-    <div class="vite-promo-thumb">
-      <a
-        class="vite-promo-link"
-        href="https://vitejs.dev/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Link to Vite official website"
-        title="Vite.js  build tool"
-      >
-        <!-- Path to images as from index.html file -->
-        <img
-          class="pic"
-          src="/vanilla-app-template/assets/vite-logo-9o_aqrTe.png"
-          alt="Vite logo"
-          width="640"
-          height="640"
-        />
-      </a>
+      <section class="container">
+  <div class="hero-container">
+    <div class="left-side block">
+      <div class="hero-tags">
+        <span>#Sport</span>
+        <span>#Healthy</span>
+        <span>#Workout</span>
+        <span>#Diet</span>
+      </div>
     </div>
-    <h1 class="main-title">
-      <span class="main-title-gradient">Vite</span>
-      Template by
-      <a
-        class="main-title-link"
-        href="https://github.com/goitacademy/vanilla-app-template"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT
-      </a>
-    </h1>
+    <div class="right-side block">
+      <h1 class="hero-title">Get <span>Body</span> in shape, Stay healthy</h1>
+      <p class="hero-text">
+        Transform your physique and embrace a healthier lifestyle with our
+        comprehensive fitness and nutrition support.
+      </p>
+    </div>
   </div>
 </section>
 
-      <article class="badges">
-  <div class="container">
-    <ul class="badges-list">
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-html-inject"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          HTML Inject
-        </a>
+      <section class="container">
+  <div class="quote-container">
+    <div class="quote-side block" id="quote">
+      <h2 class="quote-title">Quote of the day</h2>
+      <p class="quote-text"></p>
+      <p class="author-name"></p>
+    </div>
+    <div class="image-side block"></div>
+  </div>
+</section>
+
+      <section class="container">
+  <div class="exercises-section block">
+    <h2 class="exercise-title">Exercises</h2>
+
+    <ul class="filter-list">
+      <li class="filter-item">
+        <button type="button" class="active" data-filter="muscles" disabled>
+          Muscles
+        </button>
       </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-full-reload"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Full Reload
-        </a>
+      <li class="filter-item">
+        <button type="button" data-filter="body-parts">Body parts</button>
       </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/postcss-sort-media-queries"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sort Media Queries
-        </a>
+      <li class="filter-item">
+        <button type="button" data-filter="equipment">Equipment</button>
       </li>
     </ul>
+
+    <ul class="exercise-list"></ul>
+
+    <ul class="pages-list"></ul>
   </div>
-</article>
+</section>
 
-    </main>
+      <section class="container">
+<div class="info-wrapper">
+    <div class="img-info block"></div>
+    <div class="daily-info block">
+      <h2 class="info-title">110 min</h2>
+      <p class="info-subtitle">Daily norm of sports</p>
+      <p class="info-text">
+        The World Health Organization recommends at least 150 minutes of
+        moderate-intensity aerobic physical activity throughout the week for
+        adults aged 18-64. However, what happens if we adjust that number to 110
+        minutes every day?
+      </p>
+    </div>
+</div>
+</section>
 
-    <footer class="footer">
+      <footer class="footer">
   <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
+    <div class="footer-wrapper block">
+      <div class="left-side-wrapper">
+        <a href="../index.html" class="footer-logo">energy.flow</a>
+
+        <ul class="footer-social-list">
+          <li class="social-item"><a href="">FB</a></li>
+          <li class="social-item"><a href="">IG</a></li>
+          <li class="social-item"><a href="">YT</a></li>
+        </ul>
+      </div>
+
+      <div class="right-side-wrapper">
+        <h2 class="footer-title">
+          Transforming your <span>body</span> shape with us
+        </h2>
+
+        <form class="footer-form">
+          <label for="email" class="form-label"
+            >Subscribe and learn about new exercises!</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            class="form-input"
+          />
+          <button type="submit" class="form-btn">Send</button>
+        </form>
+
+        <div class="policy-wrapper">
+          <p class="policy-text">Energy Flow. All rights reserved.</p>
+
+          <ul class="policy-list">
+            <li class="policy-item">
+              <a href="" class="policy-link">Privacy Policy</a>
+            </li>
+            <li class="policy-item">
+              <a href="" class="policy-link">Terms of Service</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
 
+    </main>
+
+    <!-- <footer class="footer">
+  <div class="container">
+    <div class="footer-wrapper block">
+      <div class="left-side-wrapper">
+        <a href="../index.html" class="footer-logo">energy.flow</a>
+
+        <ul class="footer-social-list">
+          <li class="social-item"><a href="">FB</a></li>
+          <li class="social-item"><a href="">IG</a></li>
+          <li class="social-item"><a href="">YT</a></li>
+        </ul>
+      </div>
+
+      <div class="right-side-wrapper">
+        <h2 class="footer-title">
+          Transforming your <span>body</span> shape with us
+        </h2>
+
+        <form class="footer-form">
+          <label for="email" class="form-label"
+            >Subscribe and learn about new exercises!</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            class="form-input"
+          />
+          <button type="submit" class="form-btn">Send</button>
+        </form>
+
+        <div class="policy-wrapper">
+          <p class="policy-text">Energy Flow. All rights reserved.</p>
+
+          <ul class="policy-list">
+            <li class="policy-item">
+              <a href="" class="policy-link">Privacy Policy</a>
+            </li>
+            <li class="policy-item">
+              <a href="" class="policy-link">Terms of Service</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+ -->
 
   </body>
 </html>
