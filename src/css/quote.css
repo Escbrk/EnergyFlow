@@ -1,0 +1,101 @@
+.quote-side {
+  background-color: var(--accent-color);
+  padding: 42px 20px 40px 66px;
+  color: var(--bg-color);
+  height: 272px;
+}
+
+.quote-title {
+  margin-bottom: 14px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.quote-text {
+  color: var(--quote-clr);
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.author-name {
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/*!=============*/
+
+.image-side {
+  background-color: var(--main-color);
+  height: 272px;
+  background-image: url(../img/quote/mobile/quote-mobile.png);
+
+  @media screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx),
+    screen and (min-device-pixel-ratio: 2) {
+    background-image: url('../img/quote/mobile/quote-mobile@2x.png');
+    background-size: cover;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .quote-side {
+    padding: 64px 80px 64px 130px;
+    height: 302px;
+  }
+
+  .quote-title {
+    margin-bottom: 16px;
+    line-height: 1.4;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .quote-text {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .image-side {
+    height: 302px;
+    background-image: url(../img/quote/tablet/quote-tablet.png);
+
+    @media screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx),
+      screen and (min-device-pixel-ratio: 2) {
+      background-image: url('../img/quote/tablet/quote-tablet@2x.png');
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .quote-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .quote-side {
+    padding: 64px 80px 64px 130px;
+    width: 704px;
+  }
+
+  .quote-title {
+    margin-bottom: 16px;
+    line-height: 1.4;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .quote-text {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.5;
+    width: 526px;
+  }
+
+  .image-side {
+    width: 704px;
+  }
+}
