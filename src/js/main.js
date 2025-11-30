@@ -1,4 +1,3 @@
-import '../css/styles.css';
 import { getQuote, getExercise } from './api.js';
 
 const refs = {
