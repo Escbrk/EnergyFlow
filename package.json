@@ -1,11 +1,11 @@
 {
-  "name": "vanilla-app-template",
+  "name": "energy-flow",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "vite",
-    "build": "vite build --base=/vanilla-app-template/",
+    "build": "vite build --base=/EnergyFlow/",
     "preview": "vite preview",
     "pregit": "git add .",
     "git": "git commit -m 'upd'",
