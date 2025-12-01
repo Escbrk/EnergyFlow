@@ -46,7 +46,7 @@
   border-radius: 12px;
   border: 1px solid rgba(246, 246, 246, 0.3);
   padding: 96px 0;
-
+  cursor: pointer;
   background: linear-gradient(
       0deg,
       rgba(16, 16, 16, 0.7) 0%,
@@ -63,6 +63,78 @@
   margin-bottom: 20px;
 }
 
+.exercise-category {
+  color: rgba(27, 27, 27, 0.5);
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+
+  &::before {
+    content: '/';
+    color: black;
+    font-size: 32px;
+    margin-right: 8px;
+  }
+}
+
+.exercise-info {
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  position: relative;
+}
+
+.startBtn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.info-label {
+  color: #f6f6f6;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 8px;
+  border-radius: 15px;
+  background: #7e847f;
+  display: inline-block;
+  margin-right: 17px;
+  margin-bottom: 25px;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+
+.info-title {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 18px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.info-ranking {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.info-item {
+  color: rgba(27, 27, 27, 0.4);
+  font-size: 12px;
+  line-height: 1.5;
+
+  span {
+    color: var(--dark);
+  }
+}
+
 .exercise-subtitle {
   color: var(--bg-color);
   text-align: center;
@@ -77,7 +149,7 @@
   line-height: 1.5;
 }
 
-.pages-list {
+.pagination {
   display: flex;
   column-gap: 8px;
   align-items: center;
@@ -153,6 +225,34 @@
   .exercise-item {
     margin-bottom: 0;
   }
+
+  .exercise-category {
+    font-size: 24px;
+    line-height: 1.33;
+
+    &::before {
+      font-size: 44px;
+    }
+  }
+
+  .info-title {
+    font-weight: 400;
+    line-height: 1.33;
+    margin-bottom: 8px;
+    font-size: 24px;
+  }
+
+  .info-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+
+  .exercise-info {
+    width: calc((100% - 14px) / 2);
+    height: 165px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -163,5 +263,14 @@
 
   .exercise-item {
     width: calc((100% - 60px) / 4);
+  }
+
+  .exercise-info {
+    width: calc((100% - 40px) / 3);
+    height: 141px;
+  }
+
+  .info-list {
+    gap: 6px 10px;
   }
 }

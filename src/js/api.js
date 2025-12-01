@@ -24,10 +24,20 @@ export const getExercise = async (query = 'Muscles', page = 1) => {
   return data;
 };
 
-export const getExerciseInfo = () => {
-  const { data } = axios.get(
-    `exercises?bodypart=back&muscles=lats&equipment=barbell&keyword=pull&page=1&limit=10`
+export const getExerciseInfo = async (category, query, page = 1) => {
+  const windowWidth = window.innerWidth;
+  let limit = null;
+
+  if (windowWidth <= 1439) {
+    limit = 8;
+  } else {
+    limit = 9;
+  }
+
+  const { data } = await axios.get(
+    `exercises?${category}=${query}&page=${page}&limit=${limit}`
   );
 
   return data;
 };
+

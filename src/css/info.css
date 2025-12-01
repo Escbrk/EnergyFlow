@@ -1,4 +1,4 @@
-.daily-info {
+.daily-norma {
   background-color: var(--dark);
   padding: 40px 20px 40px 70px;
   color: rgba(246, 246, 246, 0.6);
@@ -6,7 +6,7 @@
   line-height: 1.29;
 }
 
-.info-title {
+.daily-title {
   color: var(--bg-color);
   font-size: 20px;
   font-weight: 500;
@@ -14,11 +14,11 @@
   margin-bottom: 2px;
 }
 
-.info-subtitle {
+.daily-subtitle {
   margin-bottom: 14px;
 }
 
-.img-info {
+.img-daily {
   height: 269px;
   background-image: url(../img/info/mobile/info-mobile.png);
 
@@ -31,7 +31,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .img-info {
+  .img-daily {
     height: 302px;
     background-image: url(../img/info/tablet/info-tablet.png);
 
@@ -43,33 +43,33 @@
     }
   }
 
-  .daily-info {
+  .daily-norma {
     padding: 64px 69px 64px 114px;
     font-size: 16px;
     line-height: 1.5;
   }
 
-  .info-title {
+  .daily-title {
     font-size: 24px;
     line-height: 1.33;
   }
 
-  .info-subtitle {
+  .daily-subtitle {
     margin-bottom: 25px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .info-wrapper {
+  .daily-wrapper {
     display: flex;
   }
 
-  .daily-info,
-  .img-info {
+  .daily-norma,
+  .img-daily {
     width: 704px;
   }
 
-  .daily-info {
+  .daily-norma {
     padding: 64px 64px 64px 114px;
   }
 }
