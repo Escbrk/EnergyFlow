@@ -228,7 +228,6 @@
 
   .exercise-category {
     font-size: 24px;
-    line-height: 1.33;
 
     &::before {
       font-size: 44px;

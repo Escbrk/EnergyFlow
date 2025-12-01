@@ -2,7 +2,9 @@
   background-color: var(--accent-color);
   padding: 42px 20px 40px 66px;
   color: var(--bg-color);
-  height: 272px;
+  min-height: 272px;
+
+  position: relative;
 }
 
 .quote-title {
@@ -10,6 +12,27 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
+}
+
+.quote-icon {
+  fill: var(--bg-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  background: rgba(246, 246, 246, 0.1);
+
+  position: absolute;
+  left: 20px;
+  top: 40px;
+}
+
+.comma-icon {
+  fill: var(--bg-color);
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: 40px;
+  right: 20px;
 }
 
 .quote-text {
@@ -42,7 +65,7 @@
 @media screen and (min-width: 768px) {
   .quote-side {
     padding: 64px 80px 64px 130px;
-    height: 302px;
+    min-height: 302px;
   }
 
   .quote-title {
@@ -68,6 +91,18 @@
       background-image: url('../img/quote/tablet/quote-tablet@2x.png');
     }
   }
+
+  .quote-icon {
+    left: 80px;
+    top: 64px;
+  }
+
+  .comma-icon {
+    width: 48px;
+    height: 48px;
+    top: 32px;
+    right: 80px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -78,7 +113,7 @@
 
   .quote-side {
     padding: 64px 80px 64px 130px;
-    width: 704px;
+    min-width: 704px;
   }
 
   .quote-title {
@@ -97,5 +132,13 @@
 
   .image-side {
     width: 704px;
+  }
+
+  .quote-icon {
+    left: 64px;
+  }
+
+  .comma-icon {
+    right: 64px;
   }
 }

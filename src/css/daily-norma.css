@@ -4,6 +4,7 @@
   color: rgba(246, 246, 246, 0.6);
   font-size: 14px;
   line-height: 1.29;
+  position: relative;
 }
 
 .daily-title {
@@ -27,6 +28,25 @@
     screen and (min-device-pixel-ratio: 2) {
     background-image: url(../img/info/mobile/info-mobile@2x.png);
     background-size: cover;
+  }
+}
+
+.icon-wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  background-color: rgba(246, 246, 246, 0.1);
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .daily-icon {
+    fill: var(--bg-color);
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -56,6 +76,11 @@
 
   .daily-subtitle {
     margin-bottom: 25px;
+  }
+
+  .icon-wrapper {
+    top: 65px;
+    left: 65px;
   }
 }
 

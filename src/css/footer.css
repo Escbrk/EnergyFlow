@@ -115,6 +115,13 @@
   }
 }
 
+.footer-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--bg-color);
+  opacity: 0.8;
+}
+
 @media screen and (min-width: 768px) {
   .footer-wrapper {
     position: relative;
@@ -195,6 +202,11 @@
     justify-content: center;
     column-gap: 32px;
     width: 100%;
+  }
+
+  .footer-icon {
+    width: 28px;
+    height: 28px;
   }
 }
 

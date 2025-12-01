@@ -5,35 +5,27 @@ const refs = {
   exerciseList: document.querySelector('.exercise-list'),
   pagination: document.querySelector('.pagination'),
   filterList: document.querySelector('.filter-list'),
-  exerciseCategory: document.querySelector('.exercise-category'),
+  categoryContainer: document.querySelector('.category-container'),
 };
 
 const createQuoteMarkup = async () => {
-  if (!localStorage.getItem('DailyQuote')) {
+  let stored = localStorage.getItem('DailyQuote');
+  let data = stored ? JSON.parse(stored) : null;
+
+  const isExpired = !data || Date.now() - data.date > 86400000;
+
+  if (isExpired) {
     const { author, quote } = await getQuote();
+    data = { author, quote, date: Date.now() };
 
-    const date = new Date();
-    const quoteData = {
-      quote,
-      author,
-      date: `Day: ${date.getDay()} / Month: ${date.getMonth()} / Year: ${date.getFullYear()}`,
-    };
+    localStorage.setItem('DailyQuote', JSON.stringify(data));
 
-    localStorage.setItem('DailyQuote', JSON.stringify(quoteData));
-    refs.quoteBlock.children[1].textContent = quote;
-    refs.quoteBlock.children[2].textContent = author;
-  } else {
-    const today = new Date();
-    const dateNow = `Day: ${today.getDay()} / Month: ${today.getMonth()} / Year: ${today.getFullYear()}`;
-    const { quote, author, date } = JSON.parse(
-      localStorage.getItem('DailyQuote')
-    );
-
-    if (date === dateNow) {
-      refs.quoteBlock.children[1].textContent = quote;
-      refs.quoteBlock.children[2].textContent = author;
-    }
+    refs.quoteBlock.children[1].textContent = data.quote;
+    refs.quoteBlock.children[2].textContent = data.author;
   }
+
+  refs.quoteBlock.children[1].textContent = data.quote;
+  refs.quoteBlock.children[2].textContent = data.author;
 };
 
 let query;
@@ -56,6 +48,9 @@ const renderExercise = async (query, choosenPage) => {
     .join('');
 
   refs.exerciseList.innerHTML = markup;
+  refs.categoryContainer.innerHTML = '';
+
+  // refs.exerciseList.style = '';
 
   exerciseFilterBtnMarkup(totalPages);
   setActivePage(page);
@@ -79,7 +74,6 @@ const renderInfo = async (category, query, currentPage) => {
     currentPage
   );
   const markup = results
-    // .filter(el => el.bodyPart === query)
     .map(({ target, rating, burnedCalories, bodyPart, time, name }) => {
       const formattedRating = String(rating.toFixed(1)).padEnd(2, 0);
 
@@ -99,8 +93,10 @@ const renderInfo = async (category, query, currentPage) => {
     })
     .join('');
 
-  // refs.exerciseCategory.innerHTML = `${}`
+  refs.categoryContainer.innerHTML = `<span class="exercise-category">${query}</span>`;
+
   refs.exerciseList.innerHTML = markup;
+  // refs.exerciseList.style = 'gap: 28px 20px';
 
   // exerciseFilterBtnMarkup(totalPages); //! Turn back on
   setActivePage(page);
