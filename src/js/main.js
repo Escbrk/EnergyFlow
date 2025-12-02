@@ -1,4 +1,5 @@
 import { getQuote, getExercise, getExerciseInfo } from './api.js';
+import spritePath from '../img/svg/sprite.svg';
 
 const refs = {
   quoteBlock: document.getElementById('quote'),
@@ -81,18 +82,18 @@ const renderInfo = async (category, query, currentPage) => {
             <li class="exercise-info">
               <button class="startBtn" type="button">Start
                 <svg class="exercise-arrow-icon">
-                  <use href="img/svg/sprite.svg#icon-arrow"></use>
+                  <use href="${spritePath}#icon-arrow"></use>
                 </svg>
               </button>
               <p class="info-label">Workout</p>
               <span class="info-ranking">${formattedRating}
                 <svg>
-                  <use href="img/svg/sprite.svg#icon-star"></use>
+                  <use href="${spritePath}#icon-star"></use>
                 </svg>
               </span>
                 <div class="info-wrapper">
                   <svg class="exercise-icon">
-                    <use href="img/svg/sprite.svg#icon-man"></use>
+                    <use href="${spritePath}#icon-man"></use>
                   </svg>
                   <h2 class="info-title">${name}</h2>
                 </div>
