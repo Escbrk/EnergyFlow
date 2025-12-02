@@ -79,10 +79,23 @@ const renderInfo = async (category, query, currentPage) => {
 
       return `
             <li class="exercise-info">
-              <button class="startBtn" type="button">Start -></button>
+              <button class="startBtn" type="button">Start
+                <svg class="exercise-arrow-icon">
+                  <use href="img/svg/sprite.svg#icon-arrow"></use>
+                </svg>
+              </button>
               <p class="info-label">Workout</p>
-              <span class="info-ranking">${formattedRating}</span>
-              <h2 class="info-title">${name}</h2>
+              <span class="info-ranking">${formattedRating}
+                <svg>
+                  <use href="img/svg/sprite.svg#icon-star"></use>
+                </svg>
+              </span>
+                <div class="info-wrapper">
+                  <svg class="exercise-icon">
+                    <use href="img/svg/sprite.svg#icon-man"></use>
+                  </svg>
+                  <h2 class="info-title">${name}</h2>
+                </div>
                   <ul class="info-list">
                     <li class="info-item">Burned calories: <span>${burnedCalories} / ${time} min</span></li>
                     <li class="info-item">Body part: <span>${bodyPart}</span></li>
