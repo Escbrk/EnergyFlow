@@ -89,7 +89,7 @@
   position: absolute;
   right: 14px;
   top: 14px;
-
+  color: var(--dark);
   display: flex;
   align-items: center;
   column-gap: 8px;
