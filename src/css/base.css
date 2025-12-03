@@ -15,6 +15,10 @@
   display: none;
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: var(--bg-color);

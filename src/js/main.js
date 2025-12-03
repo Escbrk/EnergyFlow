@@ -56,19 +56,65 @@ const renderExercise = async (query, choosenPage) => {
   refs.categoryContainer.innerHTML = '';
   refs.exerciseSearchForm.classList.add('hidden');
 
-  exerciseFilterBtnMarkup(totalPages);
+  exercisePagination(page, totalPages);
   setActivePage(page);
 };
 
-const exerciseFilterBtnMarkup = totalPages => {
-  let pages = '';
+const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
+  const half = Math.floor(maxVisible / 2);
 
-  for (let i = 1; i <= totalPages; i++) {
-    pages += `<li class="pages_list-item">
-                <button type="button" class="pages_list-btn">${i}</button>
-              </li>`;
+  let start = current - half;
+  let end = current + half;
+
+  if (start < 1) {
+    start = 1;
+    end = maxVisible;
   }
-  refs.pagination.innerHTML = pages;
+
+  if (end > total) {
+    end = total;
+    start = total - maxVisible + 1;
+  }
+
+  if (start < 1) start = 1;
+
+  const pages = [];
+  for (let i = start; i <= end; i++) {
+    pages.push(i);
+  }
+
+  const result = [];
+
+  //! Left "..."
+  if (start > 1) {
+    result.push(1); //! First page
+    result.push('...'); //! Spacer
+  }
+
+  //! Main pages
+  result.push(...pages);
+
+  //! Right "..."
+  if (end < total) {
+    result.push('...'); //! Spacer
+    result.push(total); //! Last page
+  }
+
+  const paginationBtns = result
+    .map(
+      el => `<li class="pages_list-item">
+                <button type="button" class="pages_list-btn">${el}</button>
+            </li>`
+    )
+    .join('');
+
+  refs.pagination.innerHTML = paginationBtns;
+
+  [...document.querySelectorAll('.pages_list-btn')].forEach(el => {
+    if (el.textContent.trim() === '...') {
+      el.classList.add('disabled');
+    }
+  });
 };
 
 const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
@@ -115,25 +161,31 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
   const upperCaseQuery = query[0].toUpperCase() + query.slice(1);
   refs.categoryContainer.innerHTML = `<span class="exercise-category">${upperCaseQuery}</span>`;
 
-  if (markup.trim() === '') {
-    markup = `<h2 class="unsucces-title">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</h2>`;
+  let isEmpty;
 
-    exerciseFilterBtnMarkup(0);
+  if (markup.trim() === '') {
+    isEmpty = true;
+    markup = `<h3 class="unsucces-title">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</h3>`;
+  } else {
+    isEmpty = false;
   }
 
   refs.exerciseList.innerHTML = markup;
-  // exerciseFilterBtnMarkup(totalPages); //! Turn back on
+
+  isEmpty ? exercisePagination() : exercisePagination(page, totalPages);
+
   setActivePage(page);
+
+  return isEmpty;
 };
 
 const setActivePage = activePage => {
-  const pageListexerciseFilterBtn = [
-    ...document.querySelectorAll('.pages_list-btn'),
-  ];
+  const pageListFilterBtn = [...document.querySelectorAll('.pages_list-btn')];
 
-  pageListexerciseFilterBtn.forEach(el => {
+  pageListFilterBtn.forEach(el => {
     const numericPage = parseFloat(el.textContent);
     const currentPage = parseFloat(activePage);
+
     if (numericPage === currentPage) {
       el.classList.add('active');
       el.disabled = true;
@@ -189,17 +241,14 @@ refs.exerciseList.addEventListener('click', e => {
   }
 });
 
-refs.exerciseSearchForm.addEventListener('submit', e => {
+refs.exerciseSearchForm.addEventListener('submit', async e => {
   e.preventDefault();
 
   const formData = new FormData(refs.exerciseSearchForm);
-
   const searchTarget = Object.fromEntries(formData).search.toLowerCase();
+  const status = await renderInfo({ category, query, searchTarget });
 
-  renderInfo({ category, query, searchTarget });
-
-  // if (markup) {
-  //   console.log(markup);
-  //   // e.target.reset();
-  // }
+  if (!status) {
+    e.target.reset();
+  }
 });
