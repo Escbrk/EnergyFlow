@@ -23,7 +23,7 @@
 
     <script type="module" crossorigin src="/EnergyFlow/index.js"></script>
     <link rel="modulepreload" crossorigin href="/EnergyFlow/assets/vendor-2s9xPmg-.js">
-    <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/index-CzoHXh0L.css">
+    <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/index-DPt9ek-C.css">
   </head>
   <body>
     <header class="header container">
@@ -32,7 +32,9 @@
 
     <nav class="tablet">
       <ul class="header-menu">
-        <li><a class="header-menu-link active" href="">Home</a></li>
+        <li>
+          <a class="header-menu-link active" href="../index.html">Home</a>
+        </li>
         <li><a class="header-menu-link" href="">Favorites</a></li>
       </ul>
 
@@ -130,19 +132,40 @@
       Exercises <span class="category-container"></span>
     </h2>
 
-    <ul class="filter-list">
-      <li class="filter-item">
-        <button type="button" class="active" data-filter="muscles" disabled>
-          Muscles
-        </button>
-      </li>
-      <li class="filter-item">
-        <button type="button" data-filter="body-parts">Body parts</button>
-      </li>
-      <li class="filter-item">
-        <button type="button" data-filter="equipment">Equipment</button>
-      </li>
-    </ul>
+    <div class="filter-wrapper">
+      <ul class="filter-list">
+        <li class="filter-item">
+          <button type="button" class="active" data-filter="muscles" disabled>
+            Muscles
+          </button>
+        </li>
+        <li class="filter-item">
+          <button type="button" data-filter="body-parts">Body parts</button>
+        </li>
+        <li class="filter-item">
+          <button type="button" data-filter="equipment">Equipment</button>
+        </li>
+      </ul>
+
+      <form class="exercise-search-form hidden">
+        <div class="search-input-wrapper">
+          <label for="search"></label>
+          <input
+            type="text"
+            class="search-input"
+            name="search"
+            placeholder="Search"
+          />
+
+          <button type="submit">
+            <svg>
+              <use href="/EnergyFlow/assets/sprite-Cv5TkU5H.svg#icon-search"></use>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
     <ul class="exercise-list"></ul>
 
     <ul class="pagination"></ul>
