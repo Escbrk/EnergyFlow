@@ -33,6 +33,7 @@ const createQuoteMarkup = async () => {
 let query;
 let category;
 let markup;
+let searchTarget;
 const exerciseFilterBtn = [
   ...refs.filterList.querySelectorAll('button[data-filter]'),
 ];
@@ -121,11 +122,11 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
   const { results, totalPages, page } = await getExerciseInfo(
     category,
     query,
-    currentPage
+    currentPage,
+    searchTarget
   );
 
   markup = results
-    .filter(({ target }) => (searchTarget ? searchTarget === target : target))
     .map(({ target, rating, burnedCalories, bodyPart, time, name }) => {
       const formattedRating = String(rating.toFixed(1));
 
@@ -203,8 +204,9 @@ refs.pagination.addEventListener('click', e => {
   if (e.target.classList.contains('pages_list-btn')) {
     const currentPage = parseFloat(e.target.textContent);
     const target = document.querySelector('.exercise-info');
+
     target
-      ? renderInfo({ category, query, currentPage })
+      ? renderInfo({ category, query, currentPage, searchTarget })
       : renderExercise(query, currentPage);
   }
 });
@@ -245,7 +247,7 @@ refs.exerciseSearchForm.addEventListener('submit', async e => {
   e.preventDefault();
 
   const formData = new FormData(refs.exerciseSearchForm);
-  const searchTarget = Object.fromEntries(formData).search.toLowerCase();
+  searchTarget = Object.fromEntries(formData).search.toLowerCase();
   const status = await renderInfo({ category, query, searchTarget });
 
   if (!status) {

@@ -7,15 +7,10 @@ export const getQuote = async () => {
   return data;
 };
 
-export const getExercise = async (query = 'Muscles', page = 1) => {
-  const windowWidth = window.innerWidth;
-  let limit = null;
+let limit;
 
-  if (windowWidth <= 767) {
-    limit = 8;
-  } else {
-    limit = 12;
-  }
+export const getExercise = async (query = 'Muscles', page = 1) => {
+  limit = window.innerWidth <= 767 ? 8 : 12;
 
   const { data } = await axios.get(
     `filters?filter=${query}&page=${page}&limit=${limit}`
@@ -24,20 +19,19 @@ export const getExercise = async (query = 'Muscles', page = 1) => {
   return data;
 };
 
-export const getExerciseInfo = async (category, query, page = 1) => {
-  const windowWidth = window.innerWidth;
-  let limit = null;
+export const getExerciseInfo = async (
+  category,
+  query,
+  page = 1,
+  searchTarget = ''
+) => {
+  limit = window.innerWidth <= 1439 ? 8 : 9;
 
-  if (windowWidth <= 1439) {
-    limit = 8;
-  } else {
-    limit = 9;
-  }
+  const fixedCategory = category.includes(' ') ? 'bodypart' : category;
 
   const { data } = await axios.get(
-    `exercises?${category}=${query}&page=${page}&limit=${limit}`
+    `exercises?${fixedCategory.toLowerCase()}=${query}&keyword=${searchTarget}&page=${page}&limit=${limit}`
   );
 
   return data;
 };
-
