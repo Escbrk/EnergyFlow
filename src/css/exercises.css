@@ -1,7 +1,6 @@
 .exercises-section {
   background-color: var(--main-color);
   padding: 40px 20px;
-  min-height: 760px;
 }
 
 .exercise-title {
@@ -166,6 +165,7 @@
   color: rgba(27, 27, 27, 0.4);
   font-size: 12px;
   line-height: 1.5;
+  letter-spacing: -0.01em;
 
   span {
     color: var(--dark);
@@ -263,6 +263,7 @@
   line-height: 1.29;
   letter-spacing: -0.01em;
   margin-top: 124px;
+  margin-bottom: 300px;
 
   span {
     color: var(--accent-color);
@@ -298,7 +299,6 @@
 
   .exercises-section {
     padding: 64px 48px;
-    min-height: 1091px;
   }
 
   .exercise-title {
@@ -373,6 +373,7 @@
     margin-top: 169px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 553px;
     width: 536px;
   }
 }
@@ -380,7 +381,6 @@
 @media screen and (min-width: 1440px) {
   .exercise-list {
     gap: 40px 20px;
-    margin-bottom: 32px;
   }
 
   .exercise-item {
@@ -389,11 +389,10 @@
 
   .exercise-info {
     width: calc((100% - 40px) / 3);
-    height: 141px;
   }
 
   .info-list {
-    gap: 6px 10px;
+    gap: 6px 16px;
   }
 
   .exercise-search-form {
@@ -413,6 +412,7 @@
     width: 684px;
     font-size: 18px;
     margin-top: 185px;
+    margin-bottom: 318px;
   }
 
   .exercises-section {

@@ -130,6 +130,11 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
     .map(({ target, rating, burnedCalories, bodyPart, time, name }) => {
       const formattedRating = String(rating.toFixed(1));
 
+      const upperWords = {
+        bodyPart: bodyPart[0].toUpperCase() + bodyPart.slice(1),
+        target: target[0].toUpperCase() + target.slice(1),
+      };
+
       return `
             <li class="exercise-info">
               <button class="startBtn" type="button">Start
@@ -151,8 +156,8 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
                 </div>
                   <ul class="info-list">
                     <li class="info-item">Burned calories: <span>${burnedCalories} / ${time} min</span></li>
-                    <li class="info-item">Body part: <span>${bodyPart}</span></li>
-                    <li class="info-item">Target: <span>${target}</span></li>
+                    <li class="info-item">Body part: <span>${upperWords.bodyPart}</span></li>
+                    <li class="info-item">Target: <span>${upperWords.target}</span></li>
                   </ul>
             </li>
     `;
