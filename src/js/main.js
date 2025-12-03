@@ -7,6 +7,7 @@ const refs = {
   pagination: document.querySelector('.pagination'),
   filterList: document.querySelector('.filter-list'),
   categoryContainer: document.querySelector('.category-container'),
+  exerciseSearchForm: document.querySelector('.exercise-search-form'),
 };
 
 const createQuoteMarkup = async () => {
@@ -17,7 +18,7 @@ const createQuoteMarkup = async () => {
 
   if (isExpired) {
     const { author, quote } = await getQuote();
-    data = { author, quote, date: Date.now() };
+    data = { author, quote, dateStamp: Date.now() };
 
     localStorage.setItem('DailyQuote', JSON.stringify(data));
 
@@ -31,17 +32,20 @@ const createQuoteMarkup = async () => {
 
 let query;
 let category;
+let markup;
 const exerciseFilterBtn = [
   ...refs.filterList.querySelectorAll('button[data-filter]'),
 ];
 
 const renderExercise = async (query, choosenPage) => {
   const { results, totalPages, page } = await getExercise(query, choosenPage);
-  const markup = results
+  markup = results
     .map(
       ({ imgUrl, name, filter }) => `
           <li class="exercise-item" style="--img: url(${imgUrl})">
-            <h3 class="exercise-subtitle">${name}</h3>
+            <h3 class="exercise-subtitle">${
+              name[0].toUpperCase() + name.slice(1)
+            }</h3>
             <p class="exercise-name">${filter}</p>
           </li>
           `
@@ -50,8 +54,7 @@ const renderExercise = async (query, choosenPage) => {
 
   refs.exerciseList.innerHTML = markup;
   refs.categoryContainer.innerHTML = '';
-
-  // refs.exerciseList.style = '';
+  refs.exerciseSearchForm.classList.add('hidden');
 
   exerciseFilterBtnMarkup(totalPages);
   setActivePage(page);
@@ -68,15 +71,17 @@ const exerciseFilterBtnMarkup = totalPages => {
   refs.pagination.innerHTML = pages;
 };
 
-const renderInfo = async (category, query, currentPage) => {
+const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
   const { results, totalPages, page } = await getExerciseInfo(
     category,
     query,
     currentPage
   );
-  const markup = results
+
+  markup = results
+    .filter(({ target }) => (searchTarget ? searchTarget === target : target))
     .map(({ target, rating, burnedCalories, bodyPart, time, name }) => {
-      const formattedRating = String(rating.toFixed(1)).padEnd(2, 0);
+      const formattedRating = String(rating.toFixed(1));
 
       return `
             <li class="exercise-info">
@@ -107,11 +112,16 @@ const renderInfo = async (category, query, currentPage) => {
     })
     .join('');
 
-  refs.categoryContainer.innerHTML = `<span class="exercise-category">${query}</span>`;
+  const upperCaseQuery = query[0].toUpperCase() + query.slice(1);
+  refs.categoryContainer.innerHTML = `<span class="exercise-category">${upperCaseQuery}</span>`;
+
+  if (markup.trim() === '') {
+    markup = `<h2 class="unsucces-title">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</h2>`;
+
+    exerciseFilterBtnMarkup(0);
+  }
 
   refs.exerciseList.innerHTML = markup;
-  // refs.exerciseList.style = 'gap: 28px 20px';
-
   // exerciseFilterBtnMarkup(totalPages); //! Turn back on
   setActivePage(page);
 };
@@ -139,10 +149,11 @@ renderExercise();
 
 refs.pagination.addEventListener('click', e => {
   if (e.target.classList.contains('pages_list-btn')) {
-    const page = parseFloat(e.target.textContent);
+    const currentPage = parseFloat(e.target.textContent);
     const target = document.querySelector('.exercise-info');
-
-    target ? renderInfo(category, query, page) : renderExercise(query, page);
+    target
+      ? renderInfo({ category, query, currentPage })
+      : renderExercise(query, currentPage);
   }
 });
 
@@ -166,13 +177,29 @@ refs.exerciseList.addEventListener('click', e => {
   const target = e.target.closest('.exercise-item');
 
   if (target) {
-    query = target.children[0].textContent;
+    query = target.children[0].textContent.toLowerCase();
     category = target.children[1].textContent;
 
     exerciseFilterBtn.forEach(el => {
       el.disabled = false;
     });
 
-    renderInfo(category, query);
+    renderInfo({ category, query });
+    refs.exerciseSearchForm.classList.remove('hidden');
   }
+});
+
+refs.exerciseSearchForm.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const formData = new FormData(refs.exerciseSearchForm);
+
+  const searchTarget = Object.fromEntries(formData).search.toLowerCase();
+
+  renderInfo({ category, query, searchTarget });
+
+  // if (markup) {
+  //   console.log(markup);
+  //   // e.target.reset();
+  // }
 });

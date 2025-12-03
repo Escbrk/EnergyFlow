@@ -1,6 +1,7 @@
 .exercises-section {
   background-color: var(--main-color);
   padding: 40px 20px;
+  min-height: 760px;
 }
 
 .exercise-title {
@@ -16,7 +17,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   column-gap: 6px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .filter-item button {
@@ -176,6 +177,7 @@
   text-align: center;
   font-size: 20px;
   line-height: 1;
+  font-weight: 400;
 }
 
 .exercise-name {
@@ -220,6 +222,57 @@
   stroke: var(--dark);
 }
 
+.exercise-search-form {
+  line-height: 0;
+}
+
+.search-input-wrapper {
+  position: relative;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--dark);
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    fill: transparent;
+    stroke: var(--dark);
+  }
+}
+
+.search-input {
+  padding: 12px 40px 12px 14px;
+  border-radius: 30px;
+  background-color: var(--bg-color);
+  border: none;
+  outline: none;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--dark);
+    font-size: 14px;
+    line-height: 1.23;
+  }
+}
+
+.unsucces-title {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  margin-top: 124px;
+
+  span {
+    color: var(--accent-color);
+  }
+}
+
+.filter-wrapper {
+  margin-bottom: 40px;
+}
+
 @media screen and (min-width: 768px) {
   .exercise-list {
     flex-direction: row;
@@ -245,6 +298,7 @@
 
   .exercises-section {
     padding: 64px 48px;
+    min-height: 1091px;
   }
 
   .exercise-title {
@@ -255,7 +309,7 @@
 
   .filter-list {
     column-gap: 8px;
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 
   .filter-item button {
@@ -302,6 +356,25 @@
     right: 16px;
     top: 16px;
   }
+
+  .filter-wrapper {
+    display: flex;
+    margin-bottom: 53px;
+    justify-content: space-between;
+  }
+
+  .search-input {
+    width: 246px;
+  }
+
+  .unsucces-title {
+    font-size: 18px;
+    line-height: 1.33;
+    margin-top: 169px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 536px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -321,5 +394,28 @@
 
   .info-list {
     gap: 6px 10px;
+  }
+
+  .exercise-search-form {
+    flex-grow: 0;
+  }
+
+  .search-input {
+    width: 273px;
+  }
+
+  .filter-wrapper {
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .unsucces-title {
+    width: 684px;
+    font-size: 18px;
+    margin-top: 185px;
+  }
+
+  .exercises-section {
+    min-height: 827px;
   }
 }
