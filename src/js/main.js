@@ -213,7 +213,7 @@ const renderExerciseById = async id => {
     <div class="modal-window">
       <button type="button" class="close-modal-btn">
         <svg>
-          <use href="img/svg/sprite.svg#icon-close"></use>
+          <use href="${spritePath}#icon-close"></use>
         </svg>
       </button>
 
@@ -229,7 +229,7 @@ const renderExerciseById = async id => {
         <p class="modal-rating">
           ${formattedRating}
           <svg>
-            <use href="img/svg/sprite.svg#icon-star"></use>
+            <use href="${spritePath}#icon-star"></use>
           </svg>
         </p>
 
@@ -370,5 +370,6 @@ refs.backdrop.addEventListener('click', e => {
 
   if (closeModalBtn) {
     refs.backdrop.classList.add('hidden');
+    document.style = 'pointer-event: none';
   }
 });
