@@ -38,7 +38,6 @@ l.push(e);//! Last page
                   </ul>
             </li>
     `}).join("");const l=e[0].toUpperCase()+e.slice(1);n.categoryContainer.innerHTML=`<span class="exercise-category">${l}</span>`;let d;return u.trim()===""?(d=!0,u='<h3 class="unsucces-title">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</h3>'):d=!1,n.exerciseList.innerHTML=u,d?x():x(o,i),q(o),d},I=async t=>{const{name:e,bodyPart:a,target:r,rating:s,equipment:i,popularity:o,burnedCalories:l,description:d,gifUrl:c}=await U(t),h=String(s.toFixed(1)),p={name:e[0].toUpperCase()+e.slice(1),target:r[0].toUpperCase()+r.slice(1),bodyPart:a[0].toUpperCase()+a.slice(1),equipment:i[0].toUpperCase()+i.slice(1)};u=`
-    <div class="container">
     <div class="modal-window">
       <button type="button" class="close-modal-btn">
         <svg>
@@ -104,6 +103,5 @@ l.push(e);//! Last page
         </ul>
       </div>
     </div>
-  </div>
   `,n.backdrop.innerHTML=u},q=t=>{[...document.querySelectorAll(".pages_list-btn")].forEach(a=>{const r=parseFloat(a.textContent),s=parseFloat(t);r===s?(a.classList.add("active"),a.disabled=!0):(a.classList.remove("active"),a.disabled=!1)})};T();L();n.pagination.addEventListener("click",t=>{if(t.target.classList.contains("pages_list-btn")){const e=parseFloat(t.target.textContent);document.querySelector(".exercise-info")?$({category:y,query:g,currentPage:e,searchTarget:v}):L(g,e)}});n.filterList.addEventListener("click",t=>{const e=t.target.dataset.filter;g=t.target.textContent.trim(),e&&(S.forEach(a=>{a.classList.remove("active"),a.disabled=!1}),t.target.classList.add("active"),t.target.disabled=!0,L(g))});n.exerciseList.addEventListener("click",t=>{const e=t.target.closest(".exercise-item");if(e&&(g=e.children[0].textContent.toLowerCase(),y=e.children[1].textContent,S.forEach(r=>{r.disabled=!1}),$({category:y,query:g}),n.exerciseSearchForm.classList.remove("hidden")),t.target.closest(".startBtn")){n.backdrop.classList.remove("hidden");const r=t.target.closest(".exercise-info").dataset.id;I(r)}});n.exerciseSearchForm.addEventListener("submit",async t=>{t.preventDefault();const e=new FormData(n.exerciseSearchForm);v=Object.fromEntries(e).search.toLowerCase(),await $({category:y,query:g,searchTarget:v})||t.target.reset()});n.backdrop.addEventListener("click",t=>{t.target.closest(".close-modal-btn")&&n.backdrop.classList.add("hidden")});
 //# sourceMappingURL=index.js.map
