@@ -265,7 +265,7 @@ const renderExerciseById = async id => {
             <button type="button" class="favorite-btn">
               Add to favorites
               <svg>
-                <use href="img/svg/sprite.svg#icon-heart"></use>
+                <use href="${spritePath}#icon-heart"></use>
               </svg>
             </button>
           </li>
