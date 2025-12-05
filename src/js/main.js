@@ -370,6 +370,5 @@ refs.backdrop.addEventListener('click', e => {
 
   if (closeModalBtn) {
     refs.backdrop.classList.add('hidden');
-    document.style = 'pointer-event: none';
   }
 });

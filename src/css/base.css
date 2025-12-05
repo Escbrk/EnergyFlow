@@ -11,11 +11,8 @@
   scroll-behavior: smooth;
 }
 
+.backdrop.hidden,
 .hidden {
-  display: none;
-}
-
-.backdrop.hidden {
   display: none;
 }
 
