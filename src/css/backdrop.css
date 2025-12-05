@@ -6,7 +6,7 @@
   height: 100vh;
   background-color: #1b1b1b99;
   z-index: 999999;
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 20px;
 }
 
