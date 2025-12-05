@@ -210,7 +210,6 @@ const renderExerciseById = async id => {
   };
 
   markup = `
-    <div class="container">
     <div class="modal-window">
       <button type="button" class="close-modal-btn">
         <svg>
@@ -276,7 +275,6 @@ const renderExerciseById = async id => {
         </ul>
       </div>
     </div>
-  </div>
   `;
 
   refs.backdrop.innerHTML = markup;
