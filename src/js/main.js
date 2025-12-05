@@ -402,6 +402,7 @@ refs.exerciseList.addEventListener('click', async e => {
     const id = e.target.closest('.exercise-info').dataset.id;
     await renderExerciseById(id);
     refs.backdrop.classList.remove('hidden');
+    document.body.classList.add('noScroll');
   }
 });
 
@@ -426,7 +427,15 @@ refs.backdrop.addEventListener('click', e => {
   // const favoritesBtn = e.target.closest('.favorite-btn');
   // const ratingBtn = e.target.closest('.rating-btn');
 
-  if (closeModalBtn) {
+  if (closeModalBtn || e.target.classList.contains('backdrop')) {
     refs.backdrop.classList.add('hidden');
+    document.body.classList.remove('noScroll');
+  }
+});
+
+document.body.addEventListener('keydown', e => {
+  if (!refs.backdrop.classList.contains('hidden') && e.code === 'Escape') {
+    refs.backdrop.classList.add('hidden');
+    document.body.classList.remove('noScroll');
   }
 });

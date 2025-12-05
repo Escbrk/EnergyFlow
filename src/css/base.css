@@ -16,6 +16,10 @@
   display: none;
 }
 
+.noScroll {
+  overflow: hidden;
+}
+
 .disabled {
   pointer-events: none;
 }
