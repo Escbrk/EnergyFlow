@@ -1,41 +1,109 @@
-import{a as m}from"./assets/vendor-2s9xPmg-.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))a(t);new MutationObserver(t=>{for(const i of t)if(i.type==="childList")for(const n of i.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&a(n)}).observe(document,{childList:!0,subtree:!0});function r(t){const i={};return t.integrity&&(i.integrity=t.integrity),t.referrerPolicy&&(i.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?i.credentials="include":t.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function a(t){if(t.ep)return;t.ep=!0;const i=r(t);fetch(t.href,i)}})();m.defaults.baseURL="https://energyflow.b.goit.study/api/";const P=async()=>{const{data:s}=await m.get("quote");return s};let f;const k=async(s="Muscles",e=1)=>{f=window.innerWidth<=767?8:12;const{data:r}=await m.get(`filters?filter=${s}&page=${e}&limit=${f}`);return r},O=async(s,e,r=1,a="")=>{f=window.innerWidth<=1439?8:9;const t=s.includes(" ")?"bodypart":s,{data:i}=await m.get(`exercises?${t.toLowerCase()}=${e}&keyword=${a}&page=${r}&limit=${f}`);return i},h="/EnergyFlow/assets/sprite-Cv5TkU5H.svg",o={quoteBlock:document.getElementById("quote"),exerciseList:document.querySelector(".exercise-list"),pagination:document.querySelector(".pagination"),filterList:document.querySelector(".filter-list"),categoryContainer:document.querySelector(".category-container"),exerciseSearchForm:document.querySelector(".exercise-search-form")},M=async()=>{let s=localStorage.getItem("DailyQuote"),e=s?JSON.parse(s):null;if(!e||Date.now()-e.date>864e5){const{author:a,quote:t}=await P();e={author:a,quote:t,dateStamp:Date.now()},localStorage.setItem("DailyQuote",JSON.stringify(e)),o.quoteBlock.children[1].textContent=e.quote,o.quoteBlock.children[2].textContent=e.author}o.quoteBlock.children[1].textContent=e.quote,o.quoteBlock.children[2].textContent=e.author};let u,g,p,y;const C=[...o.filterList.querySelectorAll("button[data-filter]")],L=async(s,e)=>{const{results:r,totalPages:a,page:t}=await k(s,e);p=r.map(({imgUrl:i,name:n,filter:l})=>`
+import{a as f}from"./assets/vendor-2s9xPmg-.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))r(s);new MutationObserver(s=>{for(const i of s)if(i.type==="childList")for(const o of i.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&r(o)}).observe(document,{childList:!0,subtree:!0});function a(s){const i={};return s.integrity&&(i.integrity=s.integrity),s.referrerPolicy&&(i.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?i.credentials="include":s.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function r(s){if(s.ep)return;s.ep=!0;const i=a(s);fetch(s.href,i)}})();f.defaults.baseURL="https://energyflow.b.goit.study/api/";const k=async()=>{const{data:t}=await f.get("quote");return t};let m;const M=async(t="Muscles",e=1)=>{m=window.innerWidth<=767?8:12;const{data:a}=await f.get(`filters?filter=${t}&page=${e}&limit=${m}`);return a},O=async(t,e,a=1,r="")=>{m=window.innerWidth<=1439?8:9;const s=t.includes(" ")?"bodypart":t,{data:i}=await f.get(`exercises?${s.toLowerCase()}=${e}&keyword=${r}&page=${a}&limit=${m}`);return i},U=async t=>{const{data:e}=await f.get(`exercises/${t}`);return e},b="/EnergyFlow/assets/sprite-Cr8MNOq0.svg",n={quoteBlock:document.getElementById("quote"),exerciseList:document.querySelector(".exercise-list"),pagination:document.querySelector(".pagination"),filterList:document.querySelector(".filter-list"),categoryContainer:document.querySelector(".category-container"),exerciseSearchForm:document.querySelector(".exercise-search-form"),backdrop:document.querySelector(".backdrop")},T=async()=>{let t=localStorage.getItem("DailyQuote"),e=t?JSON.parse(t):null;if(!e||Date.now()-e.dateStamp>864e5){const{author:r,quote:s}=await k();e={author:r,quote:s,dateStamp:Date.now()},localStorage.setItem("DailyQuote",JSON.stringify(e))}n.quoteBlock.children[1].textContent=e.quote,n.quoteBlock.children[2].textContent=e.author};let g,y,u,v;const S=[...n.filterList.querySelectorAll("button[data-filter]")],L=async(t,e)=>{const{results:a,totalPages:r,page:s}=await M(t,e);u=a.map(({imgUrl:i,name:o,filter:l})=>`
           <li class="exercise-item" style="--img: url(${i})">
-            <h3 class="exercise-subtitle">${n[0].toUpperCase()+n.slice(1)}</h3>
+            <h3 class="exercise-subtitle">${o[0].toUpperCase()+o.slice(1)}</h3>
             <p class="exercise-name">${l}</p>
           </li>
-          `).join(""),o.exerciseList.innerHTML=p,o.categoryContainer.innerHTML="",o.exerciseSearchForm.classList.add("hidden"),x(t,a),S(t)},x=(s=0,e=0,r=3)=>{const a=Math.floor(r/2);let t=s-a,i=s+a;t<1&&(t=1,i=r),i>e&&(i=e,t=e-r+1),t<1&&(t=1);const n=[];for(let c=t;c<=i;c++)n.push(c);const l=[];//! Left "..."
-if(t>1){l.push(1);//! First page
+          `).join(""),n.exerciseList.innerHTML=u,n.categoryContainer.innerHTML="",n.exerciseSearchForm.classList.add("hidden"),x(s,r),q(s)},x=(t=0,e=0,a=3)=>{const r=Math.floor(a/2);let s=t-r,i=t+r;s<1&&(s=1,i=a),i>e&&(i=e,s=e-a+1),s<1&&(s=1);const o=[];for(let c=s;c<=i;c++)o.push(c);const l=[];//! Left "..."
+if(s>1){l.push(1);//! First page
 l.push("...");//! Spacer
 }//! Main pages
-l.push(...n);//! Right "..."
+l.push(...o);//! Right "..."
 if(i<e){l.push("...");//! Spacer
 l.push(e);//! Last page
 }const d=l.map(c=>`<li class="pages_list-item">
                 <button type="button" class="pages_list-btn">${c}</button>
-            </li>`).join("");o.pagination.innerHTML=d,[...document.querySelectorAll(".pages_list-btn")].forEach(c=>{c.textContent.trim()==="..."&&c.classList.add("disabled")})},w=async({category:s,query:e,currentPage:r,searchTarget:a})=>{const{results:t,totalPages:i,page:n}=await O(s,e,r,a);p=t.map(({target:c,rating:$,burnedCalories:q,bodyPart:b,time:E,name:F})=>{const B=String($.toFixed(1)),v={bodyPart:b[0].toUpperCase()+b.slice(1),target:c[0].toUpperCase()+c.slice(1)};return`
-            <li class="exercise-info">
+            </li>`).join("");n.pagination.innerHTML=d,[...document.querySelectorAll(".pages_list-btn")].forEach(c=>{c.textContent.trim()==="..."&&c.classList.add("disabled")})},$=async({category:t,query:e,currentPage:a,searchTarget:r})=>{const{results:s,totalPages:i,page:o}=await O(t,e,a,r);u=s.map(({target:c,rating:h,burnedCalories:p,bodyPart:w,time:E,name:B,_id:P})=>{const F=String(h.toFixed(1)),C={bodyPart:w[0].toUpperCase()+w.slice(1),target:c[0].toUpperCase()+c.slice(1)};return`
+            <li class="exercise-info" data-id=${P}>
               <button class="startBtn" type="button">Start
                 <svg class="exercise-arrow-icon">
-                  <use href="${h}#icon-arrow"></use>
+                  <use href="${b}#icon-arrow"></use>
                 </svg>
               </button>
               <p class="info-label">Workout</p>
-              <span class="info-ranking">${B}
+              <span class="info-ranking">${F}
                 <svg>
-                  <use href="${h}#icon-star"></use>
+                  <use href="${b}#icon-star"></use>
                 </svg>
               </span>
                 <div class="info-wrapper">
                   <svg class="exercise-icon">
-                    <use href="${h}#icon-man"></use>
+                    <use href="${b}#icon-man"></use>
                   </svg>
-                  <h2 class="info-title">${F}</h2>
+                  <h2 class="info-title">${B}</h2>
                 </div>
                   <ul class="info-list">
-                    <li class="info-item">Burned calories: <span>${q} / ${E} min</span></li>
-                    <li class="info-item">Body part: <span>${v.bodyPart}</span></li>
-                    <li class="info-item">Target: <span>${v.target}</span></li>
+                    <li class="info-item">Burned calories: <span>${p} / ${E} min</span></li>
+                    <li class="info-item">Body part: <span>${C.bodyPart}</span></li>
+                    <li class="info-item">Target: <span>${C.target}</span></li>
                   </ul>
             </li>
-    `}).join("");const l=e[0].toUpperCase()+e.slice(1);o.categoryContainer.innerHTML=`<span class="exercise-category">${l}</span>`;let d;return p.trim()===""?(d=!0,p='<h3 class="unsucces-title">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</h3>'):d=!1,o.exerciseList.innerHTML=p,d?x():x(n,i),S(n),d},S=s=>{[...document.querySelectorAll(".pages_list-btn")].forEach(r=>{const a=parseFloat(r.textContent),t=parseFloat(s);a===t?(r.classList.add("active"),r.disabled=!0):(r.classList.remove("active"),r.disabled=!1)})};M();L();o.pagination.addEventListener("click",s=>{if(s.target.classList.contains("pages_list-btn")){const e=parseFloat(s.target.textContent);document.querySelector(".exercise-info")?w({category:g,query:u,currentPage:e,searchTarget:y}):L(u,e)}});o.filterList.addEventListener("click",s=>{const e=s.target.dataset.filter;u=s.target.textContent.trim(),e&&(C.forEach(r=>{r.classList.remove("active"),r.disabled=!1}),s.target.classList.add("active"),s.target.disabled=!0,L(u))});o.exerciseList.addEventListener("click",s=>{const e=s.target.closest(".exercise-item");e&&(u=e.children[0].textContent.toLowerCase(),g=e.children[1].textContent,C.forEach(r=>{r.disabled=!1}),w({category:g,query:u}),o.exerciseSearchForm.classList.remove("hidden"))});o.exerciseSearchForm.addEventListener("submit",async s=>{s.preventDefault();const e=new FormData(o.exerciseSearchForm);y=Object.fromEntries(e).search.toLowerCase(),await w({category:g,query:u,searchTarget:y})||s.target.reset()});
+    `}).join("");const l=e[0].toUpperCase()+e.slice(1);n.categoryContainer.innerHTML=`<span class="exercise-category">${l}</span>`;let d;return u.trim()===""?(d=!0,u='<h3 class="unsucces-title">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</h3>'):d=!1,n.exerciseList.innerHTML=u,d?x():x(o,i),q(o),d},I=async t=>{const{name:e,bodyPart:a,target:r,rating:s,equipment:i,popularity:o,burnedCalories:l,description:d,gifUrl:c}=await U(t),h=String(s.toFixed(1)),p={name:e[0].toUpperCase()+e.slice(1),target:r[0].toUpperCase()+r.slice(1),bodyPart:a[0].toUpperCase()+a.slice(1),equipment:i[0].toUpperCase()+i.slice(1)};u=`
+    <div class="container">
+    <div class="modal-window">
+      <button type="button" class="close-modal-btn">
+        <svg>
+          <use href="img/svg/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+
+      <div class="gif-wrapper">
+        <img
+          src=${c}
+          alt=${p.name}
+          class="modal-gif"
+        />
+      </div>
+      <div class="text-wrapper">
+        <h2 class="modal-title">${p.name}</h2>
+        <p class="modal-rating">
+          ${h}
+          <svg>
+            <use href="img/svg/sprite.svg#icon-star"></use>
+          </svg>
+        </p>
+
+        <ul class="stats-list">
+          <li class="stats-item">
+            Target
+            <span>${p.target}</span>
+          </li>
+          <li class="stats-item">
+            Body Part
+            <span>${p.bodyPart}</span>
+          </li>
+          <li class="stats-item">
+            Equipment
+            <span>${p.equipment}</span>
+          </li>
+          <li class="stats-item">
+            Popular
+            <span>${o}</span>
+          </li>
+          <li class="stats-item">
+            Burned Calories
+            <span>${l}/3 min</span>
+          </li>
+        </ul>
+
+        <p class="modal-description">
+        ${d}
+        </p>
+
+        <ul class="btns-list">
+          <li>
+            <button type="button" class="favorite-btn">
+              Add to favorites
+              <svg>
+                <use href="img/svg/sprite.svg#icon-heart"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="rating-btn">Give a rating</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  `,n.backdrop.innerHTML=u},q=t=>{[...document.querySelectorAll(".pages_list-btn")].forEach(a=>{const r=parseFloat(a.textContent),s=parseFloat(t);r===s?(a.classList.add("active"),a.disabled=!0):(a.classList.remove("active"),a.disabled=!1)})};T();L();n.pagination.addEventListener("click",t=>{if(t.target.classList.contains("pages_list-btn")){const e=parseFloat(t.target.textContent);document.querySelector(".exercise-info")?$({category:y,query:g,currentPage:e,searchTarget:v}):L(g,e)}});n.filterList.addEventListener("click",t=>{const e=t.target.dataset.filter;g=t.target.textContent.trim(),e&&(S.forEach(a=>{a.classList.remove("active"),a.disabled=!1}),t.target.classList.add("active"),t.target.disabled=!0,L(g))});n.exerciseList.addEventListener("click",t=>{const e=t.target.closest(".exercise-item");if(e&&(g=e.children[0].textContent.toLowerCase(),y=e.children[1].textContent,S.forEach(r=>{r.disabled=!1}),$({category:y,query:g}),n.exerciseSearchForm.classList.remove("hidden")),t.target.closest(".startBtn")){n.backdrop.classList.remove("hidden");const r=t.target.closest(".exercise-info").dataset.id;I(r)}});n.exerciseSearchForm.addEventListener("submit",async t=>{t.preventDefault();const e=new FormData(n.exerciseSearchForm);v=Object.fromEntries(e).search.toLowerCase(),await $({category:y,query:g,searchTarget:v})||t.target.reset()});n.backdrop.addEventListener("click",t=>{t.target.closest(".close-modal-btn")&&n.backdrop.classList.add("hidden")});
 //# sourceMappingURL=index.js.map
