@@ -5,6 +5,8 @@ import {
   getExerciseById,
 } from './api.js';
 import spritePath from '../img/svg/sprite.svg';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const refs = {
   quoteBlock: document.getElementById('quote'),
@@ -20,17 +22,38 @@ const createQuoteMarkup = async () => {
   let stored = localStorage.getItem('DailyQuote');
   let data = stored ? JSON.parse(stored) : null;
 
+  const dailyQuote = {
+    text: refs.quoteBlock.querySelector('.quote-text'),
+    author: refs.quoteBlock.querySelector('.author-name'),
+  };
+
   const isExpired = !data || Date.now() - data.dateStamp > 86400000;
 
   if (isExpired) {
-    const { author, quote } = await getQuote();
-    data = { author, quote, dateStamp: Date.now() };
+    try {
+      const { author, quote } = await getQuote();
+      data = { author, quote, dateStamp: Date.now() };
 
-    localStorage.setItem('DailyQuote', JSON.stringify(data));
+      localStorage.setItem('DailyQuote', JSON.stringify(data));
+    } catch (err) {
+      iziToast.error({
+        title: 'Error',
+        message: 'Failed to fetch Daily Quote',
+      });
+
+      iziToast.info({
+        title: 'Info!',
+        message: 'Default quote was setting up!',
+      });
+
+      data = { author: 'EnergyFlow', quote: 'Stay active' };
+    }
   }
 
-  refs.quoteBlock.children[1].textContent = data.quote;
-  refs.quoteBlock.children[2].textContent = data.author;
+  if (dailyQuote.text && dailyQuote.author) {
+    dailyQuote.text.textContent = data.quote;
+    dailyQuote.author.textContent = data.author;
+  }
 };
 
 let query;
@@ -41,15 +64,15 @@ const exerciseFilterBtn = [
   ...refs.filterList.querySelectorAll('button[data-filter]'),
 ];
 
+const capitalize = str => (str ? str[0].toUpperCase() + str.slice(1) : '');
+
 const renderExercise = async (query, choosenPage) => {
   const { results, totalPages, page } = await getExercise(query, choosenPage);
   markup = results
     .map(
       ({ imgUrl, name, filter }) => `
           <li class="exercise-item" style="--img: url(${imgUrl})">
-            <h3 class="exercise-subtitle">${
-              name[0].toUpperCase() + name.slice(1)
-            }</h3>
+            <h3 class="exercise-subtitle">${capitalize(name)}</h3>
             <p class="exercise-name">${filter}</p>
           </li>
           `
@@ -58,7 +81,9 @@ const renderExercise = async (query, choosenPage) => {
 
   refs.exerciseList.innerHTML = markup;
   refs.categoryContainer.innerHTML = '';
+
   refs.exerciseSearchForm.classList.add('hidden');
+  document.querySelector('.search-input').value = '';
 
   exercisePagination(page, totalPages);
   setActivePage(page);
@@ -132,10 +157,6 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
   markup = results
     .map(({ target, rating, burnedCalories, bodyPart, time, name, _id }) => {
       const formattedRating = String(rating.toFixed(1));
-      const upperWords = {
-        bodyPart: bodyPart[0].toUpperCase() + bodyPart.slice(1),
-        target: target[0].toUpperCase() + target.slice(1),
-      };
 
       return `
             <li class="exercise-info" data-id=${_id}>
@@ -158,16 +179,21 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
                 </div>
                   <ul class="info-list">
                     <li class="info-item">Burned calories: <span>${burnedCalories} / ${time} min</span></li>
-                    <li class="info-item">Body part: <span>${upperWords.bodyPart}</span></li>
-                    <li class="info-item">Target: <span>${upperWords.target}</span></li>
+                    <li class="info-item">Body part: <span>${capitalize(
+                      bodyPart
+                    )}</span></li>
+                    <li class="info-item">Target: <span>${capitalize(
+                      target
+                    )}</span></li>
                   </ul>
             </li>
     `;
     })
     .join('');
 
-  const upperCaseQuery = query[0].toUpperCase() + query.slice(1);
-  refs.categoryContainer.innerHTML = `<span class="exercise-category">${upperCaseQuery}</span>`;
+  refs.categoryContainer.innerHTML = `<span class="exercise-category">${capitalize(
+    query
+  )}</span>`;
 
   let isEmpty;
 
@@ -202,13 +228,6 @@ const renderExerciseById = async id => {
 
   const formattedRating = String(rating.toFixed(1));
 
-  const upperWords = {
-    name: name[0].toUpperCase() + name.slice(1),
-    target: target[0].toUpperCase() + target.slice(1),
-    bodyPart: bodyPart[0].toUpperCase() + bodyPart.slice(1),
-    equipment: equipment[0].toUpperCase() + equipment.slice(1),
-  };
-
   markup = `
     <div class="modal-window">
       <button type="button" class="close-modal-btn">
@@ -220,12 +239,12 @@ const renderExerciseById = async id => {
       <div class="gif-wrapper">
         <img
           src=${gifUrl}
-          alt=${upperWords.name}
+          alt=${capitalize(name)}
           class="modal-gif"
         />
       </div>
       <div class="text-wrapper">
-        <h2 class="modal-title">${upperWords.name}</h2>
+        <h2 class="modal-title">${capitalize(name)}</h2>
         <p class="modal-rating">
           ${formattedRating}
           <svg>
@@ -236,18 +255,18 @@ const renderExerciseById = async id => {
         <ul class="stats-list">
           <li class="stats-item">
             Target
-            <span>${upperWords.target}</span>
+            <span>${capitalize(target)}</span>
           </li>
           <li class="stats-item">
             Body Part
-            <span>${upperWords.bodyPart}</span>
+            <span>${capitalize(bodyPart)}</span>
           </li>
           <li class="stats-item">
             Equipment
-            <span>${upperWords.equipment}</span>
+            <span>${capitalize(equipment)}</span>
           </li>
           <li class="stats-item">
-            Popular
+            Popularity
             <span>${popularity}</span>
           </li>
           <li class="stats-item">
@@ -327,7 +346,7 @@ refs.filterList.addEventListener('click', e => {
   }
 });
 
-refs.exerciseList.addEventListener('click', e => {
+refs.exerciseList.addEventListener('click', async e => {
   const target = e.target.closest('.exercise-item');
 
   if (target) {
@@ -338,16 +357,16 @@ refs.exerciseList.addEventListener('click', e => {
       el.disabled = false;
     });
 
-    renderInfo({ category, query });
+    await renderInfo({ category, query });
     refs.exerciseSearchForm.classList.remove('hidden');
   }
 
   const targetBtn = e.target.closest('.startBtn');
 
   if (targetBtn) {
-    refs.backdrop.classList.remove('hidden');
     const id = e.target.closest('.exercise-info').dataset.id;
-    renderExerciseById(id);
+    await renderExerciseById(id);
+    refs.backdrop.classList.remove('hidden');
   }
 });
 
@@ -359,7 +378,7 @@ refs.exerciseSearchForm.addEventListener('submit', async e => {
   const status = await renderInfo({ category, query, searchTarget });
 
   if (!status) {
-    e.target.reset();
+    refs.exerciseSearchForm.reset();
   }
 });
 

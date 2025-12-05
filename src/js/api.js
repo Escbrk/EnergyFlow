@@ -41,4 +41,3 @@ export const getExerciseById = async id => {
 
   return data;
 };
-
