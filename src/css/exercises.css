@@ -148,7 +148,6 @@
   line-height: 1.5;
 
   display: inline-flex;
-  align-items: center;
   justify-content: center;
   column-gap: 5px;
 
@@ -157,7 +156,6 @@
     height: 18px;
 
     fill: #eea10c;
-    stroke: #eea10c;
   }
 }
 

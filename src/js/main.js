@@ -1,4 +1,9 @@
-import { getQuote, getExercise, getExerciseInfo } from './api.js';
+import {
+  getQuote,
+  getExercise,
+  getExerciseInfo,
+  getExerciseById,
+} from './api.js';
 import spritePath from '../img/svg/sprite.svg';
 
 const refs = {
@@ -8,22 +13,20 @@ const refs = {
   filterList: document.querySelector('.filter-list'),
   categoryContainer: document.querySelector('.category-container'),
   exerciseSearchForm: document.querySelector('.exercise-search-form'),
+  backdrop: document.querySelector('.backdrop'),
 };
 
 const createQuoteMarkup = async () => {
   let stored = localStorage.getItem('DailyQuote');
   let data = stored ? JSON.parse(stored) : null;
 
-  const isExpired = !data || Date.now() - data.date > 86400000;
+  const isExpired = !data || Date.now() - data.dateStamp > 86400000;
 
   if (isExpired) {
     const { author, quote } = await getQuote();
     data = { author, quote, dateStamp: Date.now() };
 
     localStorage.setItem('DailyQuote', JSON.stringify(data));
-
-    refs.quoteBlock.children[1].textContent = data.quote;
-    refs.quoteBlock.children[2].textContent = data.author;
   }
 
   refs.quoteBlock.children[1].textContent = data.quote;
@@ -127,16 +130,15 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
   );
 
   markup = results
-    .map(({ target, rating, burnedCalories, bodyPart, time, name }) => {
+    .map(({ target, rating, burnedCalories, bodyPart, time, name, _id }) => {
       const formattedRating = String(rating.toFixed(1));
-
       const upperWords = {
         bodyPart: bodyPart[0].toUpperCase() + bodyPart.slice(1),
         target: target[0].toUpperCase() + target.slice(1),
       };
 
       return `
-            <li class="exercise-info">
+            <li class="exercise-info" data-id=${_id}>
               <button class="startBtn" type="button">Start
                 <svg class="exercise-arrow-icon">
                   <use href="${spritePath}#icon-arrow"></use>
@@ -183,6 +185,101 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
   setActivePage(page);
 
   return isEmpty;
+};
+
+const renderExerciseById = async id => {
+  const {
+    name,
+    bodyPart,
+    target,
+    rating,
+    equipment,
+    popularity,
+    burnedCalories,
+    description,
+    gifUrl,
+  } = await getExerciseById(id);
+
+  const formattedRating = String(rating.toFixed(1));
+
+  const upperWords = {
+    name: name[0].toUpperCase() + name.slice(1),
+    target: target[0].toUpperCase() + target.slice(1),
+    bodyPart: bodyPart[0].toUpperCase() + bodyPart.slice(1),
+    equipment: equipment[0].toUpperCase() + equipment.slice(1),
+  };
+
+  markup = `
+    <div class="container">
+    <div class="modal-window">
+      <button type="button" class="close-modal-btn">
+        <svg>
+          <use href="img/svg/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+
+      <div class="gif-wrapper">
+        <img
+          src=${gifUrl}
+          alt=${upperWords.name}
+          class="modal-gif"
+        />
+      </div>
+      <div class="text-wrapper">
+        <h2 class="modal-title">${upperWords.name}</h2>
+        <p class="modal-rating">
+          ${formattedRating}
+          <svg>
+            <use href="img/svg/sprite.svg#icon-star"></use>
+          </svg>
+        </p>
+
+        <ul class="stats-list">
+          <li class="stats-item">
+            Target
+            <span>${upperWords.target}</span>
+          </li>
+          <li class="stats-item">
+            Body Part
+            <span>${upperWords.bodyPart}</span>
+          </li>
+          <li class="stats-item">
+            Equipment
+            <span>${upperWords.equipment}</span>
+          </li>
+          <li class="stats-item">
+            Popular
+            <span>${popularity}</span>
+          </li>
+          <li class="stats-item">
+            Burned Calories
+            <span>${burnedCalories}/3 min</span>
+          </li>
+        </ul>
+
+        <p class="modal-description">
+        ${description}
+        </p>
+
+        <ul class="btns-list">
+          <li>
+            <button type="button" class="favorite-btn">
+              Add to favorites
+              <svg>
+                <use href="img/svg/sprite.svg#icon-heart"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="rating-btn">Give a rating</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  `;
+
+  refs.backdrop.innerHTML = markup;
 };
 
 const setActivePage = activePage => {
@@ -246,6 +343,14 @@ refs.exerciseList.addEventListener('click', e => {
     renderInfo({ category, query });
     refs.exerciseSearchForm.classList.remove('hidden');
   }
+
+  const targetBtn = e.target.closest('.startBtn');
+
+  if (targetBtn) {
+    refs.backdrop.classList.remove('hidden');
+    const id = e.target.closest('.exercise-info').dataset.id;
+    renderExerciseById(id);
+  }
 });
 
 refs.exerciseSearchForm.addEventListener('submit', async e => {
@@ -257,5 +362,15 @@ refs.exerciseSearchForm.addEventListener('submit', async e => {
 
   if (!status) {
     e.target.reset();
+  }
+});
+
+refs.backdrop.addEventListener('click', e => {
+  const closeModalBtn = e.target.closest('.close-modal-btn');
+  // const favoritesBtn = e.target.closest('.favorite-btn');
+  // const ratingBtn = e.target.closest('.rating-btn');
+
+  if (closeModalBtn) {
+    refs.backdrop.classList.add('hidden');
   }
 });

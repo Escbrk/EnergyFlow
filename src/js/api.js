@@ -35,3 +35,10 @@ export const getExerciseInfo = async (
 
   return data;
 };
+
+export const getExerciseById = async id => {
+  const { data } = await axios.get(`exercises/${id}`);
+
+  return data;
+};
+
