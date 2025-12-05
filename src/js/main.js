@@ -56,10 +56,12 @@ const createQuoteMarkup = async () => {
   }
 };
 
-let query;
-let category;
-let markup;
-let searchTarget;
+const globalState = {
+  query: '',
+  category: '',
+  searchTarget: '',
+};
+
 const exerciseFilterBtn = [
   ...refs.filterList.querySelectorAll('button[data-filter]'),
 ];
@@ -67,26 +69,33 @@ const exerciseFilterBtn = [
 const capitalize = str => (str ? str[0].toUpperCase() + str.slice(1) : '');
 
 const renderExercise = async (query, choosenPage) => {
-  const { results, totalPages, page } = await getExercise(query, choosenPage);
-  markup = results
-    .map(
-      ({ imgUrl, name, filter }) => `
+  try {
+    const { results, totalPages, page } = await getExercise(query, choosenPage);
+    const markup = results
+      .map(
+        ({ imgUrl, name, filter }) => `
           <li class="exercise-item" style="--img: url(${imgUrl})">
             <h3 class="exercise-subtitle">${capitalize(name)}</h3>
             <p class="exercise-name">${filter}</p>
           </li>
           `
-    )
-    .join('');
+      )
+      .join('');
 
-  refs.exerciseList.innerHTML = markup;
-  refs.categoryContainer.innerHTML = '';
+    refs.exerciseList.innerHTML = markup;
+    refs.categoryContainer.innerHTML = '';
 
-  refs.exerciseSearchForm.classList.add('hidden');
-  document.querySelector('.search-input').value = '';
+    refs.exerciseSearchForm.classList.add('hidden');
+    document.querySelector('.search-input').value = '';
 
-  exercisePagination(page, totalPages);
-  setActivePage(page);
+    exercisePagination(page, totalPages);
+    setActivePage(page);
+  } catch ({ message }) {
+    iziToast.error({
+      title: 'Error',
+      message: `Failet to fetch exercisec: ${message}`,
+    });
+  }
 };
 
 const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
@@ -147,18 +156,19 @@ const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
 };
 
 const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
-  const { results, totalPages, page } = await getExerciseInfo(
-    category,
-    query,
-    currentPage,
-    searchTarget
-  );
+  try {
+    const { results, totalPages, page } = await getExerciseInfo(
+      category,
+      query,
+      currentPage,
+      searchTarget
+    );
 
-  markup = results
-    .map(({ target, rating, burnedCalories, bodyPart, time, name, _id }) => {
-      const formattedRating = String(rating.toFixed(1));
+    let markup = results
+      .map(({ target, rating, burnedCalories, bodyPart, time, name, _id }) => {
+        const formattedRating = String(rating.toFixed(1));
 
-      return `
+        return `
             <li class="exercise-info" data-id=${_id}>
               <button class="startBtn" type="button">Start
                 <svg class="exercise-arrow-icon">
@@ -188,47 +198,54 @@ const renderInfo = async ({ category, query, currentPage, searchTarget }) => {
                   </ul>
             </li>
     `;
-    })
-    .join('');
+      })
+      .join('');
 
-  refs.categoryContainer.innerHTML = `<span class="exercise-category">${capitalize(
-    query
-  )}</span>`;
+    refs.categoryContainer.innerHTML = `<span class="exercise-category">${capitalize(
+      globalState.query
+    )}</span>`;
 
-  let isEmpty;
+    let isEmpty;
 
-  if (markup.trim() === '') {
-    isEmpty = true;
-    markup = `<h3 class="unsucces-title">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</h3>`;
-  } else {
-    isEmpty = false;
+    if (markup.trim() === '') {
+      isEmpty = true;
+      markup = `<h3 class="unsucces-title">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</h3>`;
+    } else {
+      isEmpty = false;
+    }
+
+    refs.exerciseList.innerHTML = markup;
+
+    isEmpty ? exercisePagination() : exercisePagination(page, totalPages);
+
+    setActivePage(page);
+
+    return isEmpty;
+  } catch (error) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Failed to fetch information about exercises',
+    });
   }
-
-  refs.exerciseList.innerHTML = markup;
-
-  isEmpty ? exercisePagination() : exercisePagination(page, totalPages);
-
-  setActivePage(page);
-
-  return isEmpty;
 };
 
 const renderExerciseById = async id => {
-  const {
-    name,
-    bodyPart,
-    target,
-    rating,
-    equipment,
-    popularity,
-    burnedCalories,
-    description,
-    gifUrl,
-  } = await getExerciseById(id);
+  try {
+    const {
+      name,
+      bodyPart,
+      target,
+      rating,
+      equipment,
+      popularity,
+      burnedCalories,
+      description,
+      gifUrl,
+    } = await getExerciseById(id);
 
-  const formattedRating = String(rating.toFixed(1));
+    const formattedRating = String(rating.toFixed(1));
 
-  markup = `
+    const markup = `
     <div class="modal-window">
       <button type="button" class="close-modal-btn">
         <svg>
@@ -296,7 +313,17 @@ const renderExerciseById = async id => {
     </div>
   `;
 
-  refs.backdrop.innerHTML = markup;
+    refs.backdrop.innerHTML = markup;
+  } catch (error) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Failed to fetch current exercise',
+    });
+
+    setTimeout(() => {
+      refs.backdrop.classList.add('hidden');
+    }, 0);
+  }
 };
 
 const setActivePage = activePage => {
@@ -325,14 +352,19 @@ refs.pagination.addEventListener('click', e => {
     const target = document.querySelector('.exercise-info');
 
     target
-      ? renderInfo({ category, query, currentPage, searchTarget })
-      : renderExercise(query, currentPage);
+      ? renderInfo({
+          category: globalState.category,
+          query: globalState.query,
+          currentPage,
+          searchTarget: globalState.searchTarget,
+        })
+      : renderExercise(globalState.query, currentPage);
   }
 });
 
 refs.filterList.addEventListener('click', e => {
   const target = e.target.dataset.filter;
-  query = e.target.textContent.trim();
+  globalState.query = e.target.textContent.trim();
 
   if (target) {
     exerciseFilterBtn.forEach(el => {
@@ -342,7 +374,7 @@ refs.filterList.addEventListener('click', e => {
 
     e.target.classList.add('active');
     e.target.disabled = true;
-    renderExercise(query);
+    renderExercise(globalState.query);
   }
 });
 
@@ -350,14 +382,17 @@ refs.exerciseList.addEventListener('click', async e => {
   const target = e.target.closest('.exercise-item');
 
   if (target) {
-    query = target.children[0].textContent.toLowerCase();
-    category = target.children[1].textContent;
+    globalState.query = target.children[0].textContent.toLowerCase();
+    globalState.category = target.children[1].textContent;
 
     exerciseFilterBtn.forEach(el => {
       el.disabled = false;
     });
 
-    await renderInfo({ category, query });
+    await renderInfo({
+      category: globalState.category,
+      query: globalState.query,
+    });
     refs.exerciseSearchForm.classList.remove('hidden');
   }
 
@@ -374,8 +409,12 @@ refs.exerciseSearchForm.addEventListener('submit', async e => {
   e.preventDefault();
 
   const formData = new FormData(refs.exerciseSearchForm);
-  searchTarget = Object.fromEntries(formData).search.toLowerCase();
-  const status = await renderInfo({ category, query, searchTarget });
+  globalState.searchTarget = Object.fromEntries(formData).search.toLowerCase();
+  const status = await renderInfo({
+    category: globalState.category,
+    query: globalState.query,
+    searchTarget: globalState.searchTarget,
+  });
 
   if (!status) {
     refs.exerciseSearchForm.reset();
