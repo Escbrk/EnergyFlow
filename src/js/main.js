@@ -16,6 +16,9 @@ const refs = {
   categoryContainer: document.querySelector('.category-container'),
   exerciseSearchForm: document.querySelector('.exercise-search-form'),
   backdrop: document.querySelector('.backdrop'),
+  mobileMenu: document.querySelector('.mobile-menu'),
+  mobileMenuBtn: document.querySelector('.mobile-menu-btn'),
+  closeMobileMenuBtn: document.querySelector('.close-btn'),
 };
 
 const createQuoteMarkup = async () => {
@@ -438,4 +441,12 @@ document.body.addEventListener('keydown', e => {
     refs.backdrop.classList.add('hidden');
     document.body.classList.remove('noScroll');
   }
+});
+
+refs.mobileMenuBtn.addEventListener('click', () => {
+  refs.mobileMenu.classList.remove('hidden');
+});
+
+refs.closeMobileMenuBtn.addEventListener('click', () => {
+  refs.mobileMenu.classList.add('hidden');
 });

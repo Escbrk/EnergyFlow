@@ -19,6 +19,8 @@
 }
 
 .mobile-menu-btn {
+  line-height: 0;
+
   .menu-btn {
     width: 32px;
     height: 16px;
@@ -28,8 +30,75 @@
 
 .left-side > .header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  padding: 20px 20px 0 20px;
+}
+
+.mobile-menu {
+  position: fixed;
+  background-color: var(--bg-color);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   padding: 20px;
+  min-width: 320px;
+
+  .mobile-wrapper {
+    max-width: 335px;
+    padding: 20px;
+    background-color: var(--accent-color);
+    border-radius: 30px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    .header-logo {
+      display: inline-block;
+    }
+  }
+
+  .header-logo {
+    color: var(--bg-color);
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    line-height: 0;
+  }
+
+  .icon-close-btn {
+    width: 20px;
+    height: 20px;
+    stroke: var(--bg-color);
+  }
+
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    row-gap: 16px;
+  }
+
+  .mobile-nav-link {
+    color: var(--bg-color);
+    line-height: 1.5;
+  }
+
+  .active {
+    display: inline-block;
+    padding: 6px 26px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    color: var(--dark);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -112,4 +181,3 @@
     column-gap: 398px;
   }
 }
-
