@@ -24,19 +24,21 @@
     <script type="module" crossorigin src="/EnergyFlow/index.js"></script>
     <link rel="modulepreload" crossorigin href="/EnergyFlow/assets/vendor-CLTxG5yw.js">
     <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/vendor-DnveWo0P.css">
-    <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/index-0rJjM6j4.css">
+    <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/index-m3AecHAy.css">
   </head>
   <body>
     <header class="header container">
   <div class="header-wrapper">
-    <a href="" class="header-logo">energy.flow</a>
+    <a href="../index.html" class="header-logo">energy.flow</a>
 
-    <nav class="tablet">
+    <nav class="tablet header">
       <ul class="header-menu">
         <li>
           <a class="header-menu-link active" href="../index.html">Home</a>
         </li>
-        <li><a class="header-menu-link" href="">Favorites</a></li>
+        <li>
+          <a class="header-menu-link" href="../favorites.html">Favorites</a>
+        </li>
       </ul>
 
       <ul class="social-list header-social">
@@ -65,14 +67,50 @@
     </nav>
 
     <div class="mobile-menu hidden">
-      <a href="">energy.flow</a>
+      <div class="mobile-wrapper">
+        <a href="../index.html" class="header-logo">energy.flow</a>
 
-      <nav>
-        <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">Favorites</a></li>
-        </ul>
-      </nav>
+        <button type="button" class="close-btn">
+          <svg class="icon-close-btn">
+            <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-close"></use>
+          </svg>
+        </button>
+
+        <nav>
+          <ul class="mobile-nav-list">
+            <li>
+              <a href="../index.html" class="mobile-nav-link active">Home</a>
+            </li>
+            <li>
+              <a href="../favorites.html" class="mobile-nav-link">Favorites</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- <ul class="social-list header-social">
+        <li class="social-item">
+          <a href="" rel="nofollow noreferrer noopener" target="_blank">
+            <svg class="social-icon">
+              <use href="img/svg/sprite.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="social-item">
+          <a href="" rel="nofollow noreferrer noopener" target="_blank">
+            <svg class="social-icon">
+              <use href="img/svg/sprite.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="social-item">
+          <a href="" rel="nofollow noreferrer noopener" target="_blank">
+            <svg class="social-icon">
+              <use href="img/svg/sprite.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul> -->
+      </div>
     </div>
   </div>
 </header>
