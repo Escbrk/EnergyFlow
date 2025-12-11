@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EnergyFlow</title>
 
@@ -23,10 +22,10 @@
 
     <script type="module" crossorigin src="/EnergyFlow/assets/vendor-CLTxG5yw.js"></script>
     <script type="module" crossorigin src="/EnergyFlow/assets/main-DK5qwCDm.js"></script>
-    <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/vendor-DnveWo0P.css">
     <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/main-etYmko2g.css">
+    <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/vendor-DnveWo0P.css">
   </head>
-  <body>
+  <body class="favorite-pg">
     <header class="header container">
   <div class="header-wrapper">
     <a href="../index.html" class="header-logo">energy.flow</a>
@@ -123,27 +122,8 @@
 
 
     <main>
-      <section class="container">
-  <div class="hero-container">
-    <div class="left-side">
-      <div class="hero-tags">
-        <span>#Sport</span>
-        <span>#Healthy</span>
-        <span>#Workout</span>
-        <span>#Diet</span>
-      </div>
-    </div>
-    <div class="right-side">
-      <h1 class="hero-title">Get <span>Body</span> in shape, Stay healthy</h1>
-      <p class="hero-text">
-        Transform your physique and embrace a healthier lifestyle with our
-        comprehensive fitness and nutrition support.
-      </p>
-    </div>
-  </div>
-</section>
-
-      <section class="container">
+      <div class="fav-hero container">
+        <section class="container">
   <div class="quote-container">
     <div class="quote-side block" id="quote">
       <h2 class="quote-title">Quote of the day</h2>
@@ -162,146 +142,44 @@
   </div>
 </section>
 
-      <section class="container">
-  <div class="exercises-section block">
-    <h2 class="exercise-title">
-      Exercises <span class="category-container"></span>
-    </h2>
-
-    <div class="filter-wrapper">
-      <ul class="filter-list">
-        <li class="filter-item">
-          <button type="button" class="active" data-filter="muscles" disabled>
-            Muscles
-          </button>
-        </li>
-        <li class="filter-item">
-          <button type="button" data-filter="body-parts">Body parts</button>
-        </li>
-        <li class="filter-item">
-          <button type="button" data-filter="equipment">Equipment</button>
-        </li>
-      </ul>
-
-      <form class="exercise-search-form hidden">
-        <div class="search-input-wrapper">
-          <label for="search"></label>
-          <input
-            type="text"
-            class="search-input"
-            name="search"
-            placeholder="Search"
-          />
-
-          <button type="submit">
-            <svg>
-              <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-search"></use>
-            </svg>
-          </button>
-        </div>
-      </form>
-    </div>
-
-    <ul class="exercise-list"></ul>
-
-    <ul class="pagination"></ul>
-  </div>
-</section>
-
-      <section class="container">
-  <div class="daily-wrapper">
-    <div class="img-daily block"></div>
-    <div class="daily-norma block">
-      <h2 class="daily-title">110 min</h2>
-      <p class="daily-subtitle">Daily norm of sports</p>
-      <p class="daily-text">
-        The World Health Organization recommends at least 150 minutes of
-        moderate-intensity aerobic physical activity throughout the week for
-        adults aged 18-64. However, what happens if we adjust that number to 110
-        minutes every day?
-      </p>
-
-      <div class="icon-wrapper">
+        <section class="container">
+  <div class="daily-norm-block">
+    <div class="daily-norm-img block"></div>
+    <div class="fav_daily-wrapper block">
+      <div>
         <svg class="daily-icon">
           <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-dumbbell"></use>
         </svg>
+        <p class="daily-title">110 min</p>
+        <p class="fav-daily-text">Daily norm of sports</p>
       </div>
+    </div>
+  </div>
+</section>
+
+      </div>
+
+      <section class="container">
+  <div class="fav-wrapper block">
+    <h1 class="fav-title">Favorites</h1>
+
+    <div class="wrapper">
+      <img
+        srcset="../img/favorites/fav_dumbbell/dumbbell.png 85w, ../img/favorites/fav_dumbbell/dumbbell@2x.png 170w"
+        sizes="(max-width: 767px) 85px, (min-width: 768px) 170px"
+        src="../img/favorites/fav_dumbbell/dumbbell.png"
+        alt="dumbbell"
+      />
+      <p class="fav-text">
+        It appears that you haven't added any exercises to your favorites yet.
+        To get started, you can add exercises that you like to your favorites
+        for easier access in the future.
+      </p>
     </div>
   </div>
 </section>
 
     </main>
-
-    <footer class="footer">
-  <div class="container">
-    <div class="footer-wrapper block">
-      <div class="left-side-wrapper">
-        <a href="../index.html" class="footer-logo">energy.flow</a>
-
-        <ul class="social-list footer-social">
-          <li class="social-item">
-            <a href="" rel="nofollow noreferrer noopener" target="_blank">
-              <svg class="social-icon">
-                <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-facebook"></use>
-              </svg>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="" rel="nofollow noreferrer noopener" target="_blank">
-              <svg class="social-icon">
-                <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-instagram"></use>
-              </svg>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="" rel="nofollow noreferrer noopener" target="_blank">
-              <svg class="social-icon">
-                <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-youtube"></use>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="right-side-wrapper">
-        <h2 class="footer-title">
-          Transforming your <span>body</span> shape with us
-        </h2>
-
-        <form class="footer-form">
-          <label for="email" class="form-label"
-            >Subscribe and learn about new exercises!</label
-          >
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-            class="form-input"
-          />
-          <button type="submit" class="form-btn">Send</button>
-        </form>
-
-        <div class="policy-wrapper">
-          <p class="policy-text">Energy Flow. All rights reserved.</p>
-
-          <ul class="policy-list">
-            <li class="policy-item">
-              <a href="" class="policy-link">Privacy Policy</a>
-            </li>
-            <li class="policy-item">
-              <a href="" class="policy-link">Terms of Service</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-    <div class="backdrop hidden"></div>
-
 
   </body>
 </html>
