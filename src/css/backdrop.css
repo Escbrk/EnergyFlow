@@ -34,10 +34,13 @@
 
 .modal-gif {
   width: 100%;
+  height: inherit;
   mix-blend-mode: multiply;
 }
 
 .gif-wrapper {
+  width: 295px;
+  height: 258px;
   border-radius: 12px;
   background-color: #1b1b1b33;
   margin-bottom: 20px;

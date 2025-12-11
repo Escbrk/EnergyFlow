@@ -1,6 +1,7 @@
 import { refs } from './refs.js';
-import { renderInfo, renderExercise } from './render.js';
 import { globalState } from './globalState.js';
+import { renderExercise } from './renderExercise.js';
+import { renderInfo } from './renderInfo.js';
 
 const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
   const half = Math.floor(maxVisible / 2);

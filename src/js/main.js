@@ -1,5 +1,6 @@
 import './quote.js';
 import './mobileMenu.js';
+import { renderLocalData } from './renderLocalData.js';
 
 const currentPath = window.location.pathname;
 
@@ -14,5 +15,10 @@ document
 
     if (currentPath.endsWith('index.html') || currentPath.endsWith('/')) {
       import('./render.js');
+    } else {
+      if (localStorage.getItem('Favorites')) {
+        document.querySelector('.empty-wrapper').innerHTML = '';
+        renderLocalData();
+      }
     }
   });

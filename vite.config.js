@@ -40,7 +40,6 @@ export default defineConfig(({ command }) => {
       outDir: '../dist',
       emptyOutDir: true,
     },
-    // base: '/EnergyFlow/', //! TEMPORARY SOLUTION
     plugins: [
       injectHTML(),
       FullReload(['./src/**/**.html']),

@@ -7,4 +7,5 @@ export const refs = {
   exerciseSearchForm: document.querySelector('.exercise-search-form'),
   backdrop: document.querySelector('.backdrop'),
   pagination: document.querySelector('.pagination'),
+  favList: document.querySelector('.fav-list'),
 };
