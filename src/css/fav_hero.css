@@ -24,16 +24,14 @@
     display: flex;
     position: static;
     justify-content: space-between;
+
+    @media screen and (max-width: 767px) {
+      padding: 20px;
+    }
   }
 
   .image-side {
     display: none;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .header-wrapper {
-    padding: 20px;
   }
 }
 
