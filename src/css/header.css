@@ -3,12 +3,8 @@
 }
 
 .header-wrapper {
-  position: absolute;
-  z-index: 999;
-
-  .header-logo {
-    display: none;
-  }
+  position: relative;
+  z-index: 9999;
 }
 
 .header-logo {
@@ -16,10 +12,18 @@
   font-weight: 700;
   line-height: 1.13;
   letter-spacing: -0.02em;
+
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .mobile-menu-btn {
   line-height: 0;
+
+  position: absolute;
+  top: 20px;
+  right: 20px;
 
   .menu-btn {
     width: 32px;
@@ -28,11 +32,13 @@
   }
 }
 
-.left-side > .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 20px 0 20px;
+.left-side {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 0 20px;
+  }
 }
 
 .mobile-menu {
@@ -101,16 +107,35 @@
   }
 }
 
+.mobile-list {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  svg {
+    fill: var(--bg-color);
+  }
+}
+
 @media screen and (min-width: 768px) {
+  .header-logo {
+    position: static;
+    top: 0;
+    left: 0;
+  }
+
   .left-side > .header {
     display: none;
   }
 
   .header-wrapper {
-    margin-top: 32px;
+    position: absolute;
+    z-index: 999;
     display: flex;
     align-items: center;
     width: 728px;
+    padding: 32px 0 0 32px;
 
     .header-logo {
       display: block;
@@ -119,6 +144,10 @@
 
   .mobile-menu {
     display: none;
+
+    .active {
+      padding: 0;
+    }
   }
 
   .mobile-menu-btn {
@@ -132,21 +161,29 @@
   }
 
   .header-menu {
+    padding: 8px 16px;
     display: flex;
-    column-gap: 16px;
+
     align-items: center;
     border-radius: 60px;
     background: #7e847f;
-    padding: 8px 16px;
+    justify-content: center;
+
+    width: 211px;
+    height: 52px;
   }
 
   .header-menu-link {
     color: var(--bg-color);
     line-height: 1.5;
     display: inline-block;
+    width: 96px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &.active {
-      padding: 6px 26px;
       color: #1b1b1b;
       border-radius: 30px;
       background: #fff;
@@ -156,7 +193,6 @@
   .header-logo {
     line-height: 1;
     font-size: 28px;
-    margin-left: 32px;
     margin-right: 80px;
   }
 
@@ -172,8 +208,11 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .header-wrapper {
+    padding: 24px 0 0 48px;
+  }
+
   .header-logo {
-    margin-left: 48px;
     margin-right: 397px;
   }
 

@@ -1,0 +1,56 @@
+.fav-hero {
+  .container {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.favorite-pg {
+  .header-logo {
+    position: static;
+    top: 0;
+    left: 0;
+  }
+
+  .mobile-menu-btn {
+    position: static;
+    top: 0;
+    right: 0;
+  }
+
+  .header-wrapper {
+    display: flex;
+    position: static;
+    justify-content: space-between;
+  }
+
+  .image-side {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header-wrapper {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .favorite-pg {
+    .header.container {
+      margin-bottom: 80px;
+    }
+
+    .tablet {
+      flex-grow: 1;
+    }
+
+    .header-wrapper {
+      display: flex;
+      position: static;
+      justify-content: space-between;
+    }
+  }
+}

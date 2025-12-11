@@ -76,11 +76,11 @@ a {
   max-width: 375px;
   padding-left: 20px;
   padding-right: 20px;
-  margin: 20px auto; /*!____________________________________________________ FIX IT*/
+  margin: 20px auto;
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
-    margin: 16px auto; /*!____________________________________________________ FIX IT*/
+    margin: 16px auto;
     padding-left: 16px;
     padding-right: 16px;
   }
@@ -115,4 +115,14 @@ a {
   width: 20px;
   height: 20px;
   opacity: 0.8;
+}
+
+@media screen and (min-width: 1440px) {
+  .fav-hero {
+    display: flex;
+
+    .container {
+      padding: 0;
+    }
+  }
 }

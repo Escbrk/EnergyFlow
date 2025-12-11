@@ -8,3 +8,9 @@
 @import url(./footer.css);
 
 @import url(./backdrop.css);
+
+/*!=================== */
+
+@import url(./fav_hero.css);
+@import url(./fav_daily-norm.css);
+@import url(./favorites.css);

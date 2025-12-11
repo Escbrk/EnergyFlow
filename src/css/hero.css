@@ -12,7 +12,7 @@
   @media screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx),
     screen and (min-device-pixel-ratio: 2) {
-    background-image: url('../img/hero/mobile/hero_img-mobile@2x.png');
+    background-image: url(../img/hero/mobile/hero_img-mobile@2x.png);
   }
 
   span {
@@ -79,7 +79,7 @@
     @media screen and (min-resolution: 192dpi) and (min-width: 768px),
       screen and (min-resolution: 2dppx) and (min-width: 768px),
       screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
-      background-image: url('../img/hero/tablet/hero_img-tablet@2x.png');
+      background-image: url(../img/hero/tablet/hero_img-tablet@2x.png);
     }
 
     span {
@@ -129,7 +129,7 @@
     @media screen and (min-resolution: 192dpi) and (min-width: 1440px),
       screen and (min-resolution: 2dppx) and (min-width: 1440px),
       screen and (min-device-pixel-ratio: 2) and (min-width: 1440px) {
-      background-image: url('../img/hero/desktop/hero_img-desktop@2x.png');
+      background-image: url(../img/hero/desktop/hero_img-desktop@2x.png);
     }
   }
 
