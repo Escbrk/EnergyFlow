@@ -12,7 +12,7 @@ document
       link.classList.add('active');
     }
 
-    if (currentPath.endsWith('index.html')) {
+    if (currentPath.endsWith('index.html') || currentPath.endsWith('/')) {
       import('./render.js');
     }
   });
