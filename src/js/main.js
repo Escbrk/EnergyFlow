@@ -9,6 +9,8 @@ document
   .forEach(link => {
     const href = link.getAttribute('href').replace('../', '');
 
+    console.log(currentPath)
+
     if (currentPath.endsWith(href)) {
       link.classList.add('active');
     }

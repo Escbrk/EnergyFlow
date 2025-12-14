@@ -40,6 +40,7 @@ export default defineConfig(({ command }) => {
       outDir: '../dist',
       emptyOutDir: true,
     },
+    base: '/',
     plugins: [
       injectHTML(),
       FullReload(['./src/**/**.html']),
