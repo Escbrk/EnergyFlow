@@ -2,20 +2,19 @@ import './quote.js';
 import './mobileMenu.js';
 import { renderLocalData } from './renderLocalData.js';
 
-const currentPath = window.location.pathname;
+const currentPage = location.pathname.split('/').pop() || 'index.html';
 
 document
   .querySelectorAll('.header-menu-link, .mobile-nav-link')
   .forEach(link => {
-    const href = link.getAttribute('href').replace('../', '');
+    const href = link.getAttribute('href').split("/").pop()
 
-    console.log(currentPath)
 
-    if (currentPath.endsWith(href)) {
+    if (currentPage.endsWith(href)) {
       link.classList.add('active');
     }
 
-    if (currentPath.endsWith('index.html') || currentPath.endsWith('/')) {
+    if (currentPage.endsWith('index.html') || currentPage.endsWith('/')) {
       import('./render.js');
     } else {
       if (localStorage.getItem('Favorites')) {
