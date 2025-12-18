@@ -1,6 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { refs } from './refs.js';
+import { globalState } from './globalState.js';
 import { getExerciseById } from './api.js';
 import spritePath from '../img/svg/sprite.svg';
 import { capitalize } from './capitalize.js';
@@ -10,11 +11,9 @@ iziToast.settings({
   position: 'bottomRight',
 });
 
-let data;
-
-export const renderExerciseById = async id => {
+export const renderExerciseById = async (id, type) => {
   try {
-    data = await getExerciseById(id);
+    globalState.data = await getExerciseById(id);
 
     const {
       name,
@@ -27,9 +26,25 @@ export const renderExerciseById = async id => {
       description,
       gifUrl,
       _id,
-    } = data;
+    } = globalState.data;
 
     const formattedRating = String(rating.toFixed(1));
+
+    const favBtn =
+      type === 'available'
+        ? `
+            <button type="button" class="favorite-btn" data-action="add">
+              Add to favorites
+              <svg>
+                <use href="${spritePath}#icon-heart"></use>
+              </svg>
+            </button>`
+        : `<button type="button" class="favorite-btn" data-action="delete">
+              Remove
+              <svg>
+                <use href="${spritePath}#icon-heart-broken"></use>
+              </svg>
+            </button>`;
 
     const markup = `
     <div class="modal-window" data-id="${_id}">
@@ -84,12 +99,7 @@ export const renderExerciseById = async id => {
 
         <ul class="btns-list">
           <li>
-            <button type="button" class="favorite-btn">
-              Add to favorites
-              <svg>
-                <use href="${spritePath}#icon-heart"></use>
-              </svg>
-            </button>
+          ${favBtn}
           </li>
           <li>
             <button type="button" class="rating-btn">Give a rating</button>
@@ -100,6 +110,8 @@ export const renderExerciseById = async id => {
   `;
 
     refs.backdrop.innerHTML = markup;
+    refs.backdrop.classList.remove('hidden');
+    document.body.classList.add('noScroll');
   } catch (error) {
     console.log(error);
     iziToast.error({
@@ -119,23 +131,30 @@ refs.backdrop.addEventListener('click', e => {
   // const ratingBtn = e.target.closest('.rating-btn');
 
   if (favoritesBtn) {
-    const savedData = JSON.parse(localStorage.getItem('Favorites')) || [];
-    const exist = savedData.some(({ _id }) => _id === data._id);
+    const action = favoritesBtn.dataset.action;
+    if (action === 'add') {
+      const savedData = JSON.parse(localStorage.getItem('Favorites')) || [];
+      const exist = savedData.some(({ _id }) => _id === globalState.data._id);
 
-    if (exist) {
-      iziToast.warning({
-        title: 'Warning',
-        message: 'Already exist in your favorite list',
+      if (exist) {
+        iziToast.warning({
+          title: 'Warning',
+          message: 'Already exist in your favorite list',
+        });
+        return;
+      }
+
+      savedData.push(globalState.data);
+      localStorage.setItem('Favorites', JSON.stringify(savedData));
+      iziToast.success({
+        title: 'Succes',
+        message: 'Succesfully added to your favorite list',
       });
-      return;
     }
 
-    savedData.push(data);
-    localStorage.setItem('Favorites', JSON.stringify(savedData));
-    iziToast.success({
-      title: 'Succes',
-      message: 'Succesfully added to your favorite list',
-    });
+    if (action === 'delete') {
+      console.log('delete');
+    }
   }
 
   if (closeModalBtn || e.target.classList.contains('backdrop')) {

@@ -1,9 +1,7 @@
 import { globalState } from './globalState.js';
 import { refs } from './refs.js';
-import { renderExercise } from './renderExercise.js';
-import { renderExerciseById } from './renderExerciseById.js';
-import { renderInfo } from './renderInfo.js';
-
+import { renderExercise, renderInfo } from './exercises.js';
+import { renderExerciseById } from './modal.js';
 
 const filterList = document.querySelector('.filter-list');
 
@@ -51,7 +49,9 @@ refs.exerciseList.addEventListener('click', async e => {
 
   if (targetBtn) {
     const id = e.target.closest('.exercise-info').dataset.id;
-    await renderExerciseById(id);
+    const type = e.currentTarget.dataset.type;
+
+    await renderExerciseById(id, type);
     refs.backdrop.classList.remove('hidden');
     document.body.classList.add('noScroll');
   }
@@ -72,8 +72,6 @@ refs.exerciseSearchForm.addEventListener('submit', async e => {
     refs.exerciseSearchForm.reset();
   }
 });
-
-
 
 document.body.addEventListener('keydown', e => {
   if (!refs.backdrop.classList.contains('hidden') && e.code === 'Escape') {

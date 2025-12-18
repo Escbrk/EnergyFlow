@@ -8,6 +8,7 @@
   z-index: 999999;
   overflow-y: scroll;
   padding: 20px;
+  /* overflow: auto; */
 }
 
 .modal-window {
