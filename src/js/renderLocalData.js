@@ -7,14 +7,14 @@ export const renderLocalData = () => {
     .map(({ name, bodyPart, burnedCalories, time, target, _id }) => {
       return `
             <li class="exercise-info" data-id=${_id}>
-              <button class="startBtn" type="button">Start
+              <button class="startBtn" type="button" >Start
                 <svg class="exercise-arrow-icon">
                   <use href="${spritePath}#icon-arrow"></use>
                 </svg>
               </button>
              <div class="wrapp">
                 <p class="info-label">Workout</p>
-                 <button type="button">
+                 <button type="button" class="deleteBtn">
                     <svg class="info-delete">
                       <use href="${spritePath}#icon-trash"></use>
                     </svg>
@@ -36,9 +36,10 @@ export const renderLocalData = () => {
     })
     .join('');
 
-  refs.favList.innerHTML = markup;
-
-  refs.emptyWrapper.style.display = localData.length === 0 ? 'flex' : 'none';
+  if (refs.favList) {
+    refs.favList.innerHTML = markup;
+    refs.emptyWrapper.style.display = localData.length === 0 ? 'flex' : 'none';
+  }
 };
 
 renderLocalData();
