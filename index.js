@@ -1,4 +1,4 @@
-import{r as i,g as r,a as T,c as g,b as k,s as p,d as B}from"./assets/modal-BJfMWSnD.js";import{i as y}from"./assets/vendor-CLTxG5yw.js";const f=(e=0,t=0,s=3)=>{const n=Math.floor(s/2);let a=e-n,l=e+n;a<1&&(a=1,l=s),l>t&&(l=t,a=t-s+1),a<1&&(a=1);const u=[];for(let c=a;c<=l;c++)u.push(c);const o=[];//! Left "..."
+import{r as i,g as r,a as T,c as g,b as k,s as p,d as B}from"./assets/modal-CUk-72qs.js";import{i as y}from"./assets/vendor-CLTxG5yw.js";const f=(e=0,t=0,s=3)=>{const n=Math.floor(s/2);let a=e-n,l=e+n;a<1&&(a=1,l=s),l>t&&(l=t,a=t-s+1),a<1&&(a=1);const u=[];for(let c=a;c<=l;c++)u.push(c);const o=[];//! Left "..."
 if(a>1){o.push(1);//! First page
 o.push("...");//! Spacer
 }//! Main pages
