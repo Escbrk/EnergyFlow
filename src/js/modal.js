@@ -6,6 +6,8 @@ import { getExerciseById } from './api.js';
 import spritePath from '../img/svg/sprite.svg';
 import { capitalize } from './capitalize.js';
 
+import './handlers/modal-handler.js';
+
 iziToast.settings({
   zindex: 999999,
   position: 'bottomRight',
@@ -113,7 +115,6 @@ export const renderExerciseById = async (id, type) => {
     refs.backdrop.classList.remove('hidden');
     document.body.classList.add('noScroll');
   } catch (error) {
-    console.log(error);
     iziToast.error({
       title: 'Error',
       message: 'Failed to fetch current exercise',
@@ -124,41 +125,3 @@ export const renderExerciseById = async (id, type) => {
     }, 0);
   }
 };
-
-refs.backdrop.addEventListener('click', e => {
-  const closeModalBtn = e.target.closest('.close-modal-btn');
-  const favoritesBtn = e.target.closest('.favorite-btn');
-  // const ratingBtn = e.target.closest('.rating-btn');
-
-  if (favoritesBtn) {
-    const action = favoritesBtn.dataset.action;
-    if (action === 'add') {
-      const savedData = JSON.parse(localStorage.getItem('Favorites')) || [];
-      const exist = savedData.some(({ _id }) => _id === globalState.data._id);
-
-      if (exist) {
-        iziToast.warning({
-          title: 'Warning',
-          message: 'Already exist in your favorite list',
-        });
-        return;
-      }
-
-      savedData.push(globalState.data);
-      localStorage.setItem('Favorites', JSON.stringify(savedData));
-      iziToast.success({
-        title: 'Succes',
-        message: 'Succesfully added to your favorite list',
-      });
-    }
-
-    if (action === 'delete') {
-      console.log('delete');
-    }
-  }
-
-  if (closeModalBtn || e.target.classList.contains('backdrop')) {
-    refs.backdrop.classList.add('hidden');
-    document.body.classList.remove('noScroll');
-  }
-});

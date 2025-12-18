@@ -1,8 +1,8 @@
 import { refs } from './refs.js';
 import spritePath from '../img/svg/sprite.svg';
-const localData = JSON.parse(localStorage.getItem('Favorites'));
 
 export const renderLocalData = () => {
+  const localData = JSON.parse(localStorage.getItem('Favorites'));
   const markup = localData
     .map(({ name, bodyPart, burnedCalories, time, target, _id }) => {
       return `
@@ -37,9 +37,8 @@ export const renderLocalData = () => {
     .join('');
 
   refs.favList.innerHTML = markup;
+
+  refs.emptyWrapper.style.display = localData.length === 0 ? 'flex' : 'none';
 };
 
-if (localData) {
-  renderLocalData();
-  refs.emptyWrapper.style = 'display: none';
-}
+renderLocalData();
