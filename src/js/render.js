@@ -72,10 +72,3 @@ refs.exerciseSearchForm.addEventListener('submit', async e => {
     refs.exerciseSearchForm.reset();
   }
 });
-
-document.body.addEventListener('keydown', e => {
-  if (!refs.backdrop.classList.contains('hidden') && e.code === 'Escape') {
-    refs.backdrop.classList.add('hidden');
-    document.body.classList.remove('noScroll');
-  }
-});

@@ -48,3 +48,10 @@ refs.backdrop.addEventListener('click', e => {
     document.body.classList.remove('noScroll');
   }
 });
+
+document.body.addEventListener('keydown', e => {
+  if (!refs.backdrop.classList.contains('hidden') && e.code === 'Escape') {
+    refs.backdrop.classList.add('hidden');
+    document.body.classList.remove('noScroll');
+  }
+});
