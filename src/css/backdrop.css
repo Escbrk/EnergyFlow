@@ -8,13 +8,12 @@
   z-index: 999999;
   overflow-y: scroll;
   padding: 20px;
-  /* overflow: auto; */
 }
 
 .modal-window {
   position: relative;
   background-color: var(--bg-color);
-  padding: 40px 20px;
+  padding: 20px;
   max-width: 335px;
   border-radius: 20px;
   margin: 0 auto;

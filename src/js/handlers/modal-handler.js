@@ -8,7 +8,6 @@ import { deleteItem } from './deleteHandler.js';
 refs.backdrop.addEventListener('click', e => {
   const closeModalBtn = e.target.closest('.close-modal-btn');
   const favoritesBtn = e.target.closest('.favorite-btn');
-  const id = e.target.closest('.modal-window').dataset.id;
   // const ratingBtn = e.target.closest('.rating-btn');
 
   const savedData = JSON.parse(localStorage.getItem('Favorites')) || [];
@@ -35,6 +34,8 @@ refs.backdrop.addEventListener('click', e => {
     }
 
     if (action === 'delete') {
+      const id = e.target.closest('.modal-window').dataset.id;
+
       deleteItem(id);
       renderLocalData();
       refs.backdrop.classList.add('hidden');
