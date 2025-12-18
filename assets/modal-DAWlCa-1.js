@@ -25,7 +25,7 @@ import{a as u,i as l}from"./vendor-CLTxG5yw.js";(function(){const s=document.cre
                     <li class="info-item">Target: <span>${n}</span></li>
                   </ul>
             </li>
-    `).join("");r.favList&&(r.favList.innerHTML=s,r.emptyWrapper.style.display=e.length===0?"flex":"none")};y();const k=e=>{const o=JSON.parse(localStorage.getItem("Favorites")).filter(({_id:i})=>i!==e);localStorage.setItem("Favorites",JSON.stringify(o)),l.success({title:"Succes",message:"Succesfully deleted from your favorite list"})};r.backdrop.addEventListener("click",e=>{const s=e.target.closest(".close-modal-btn"),o=e.target.closest(".favorite-btn"),i=JSON.parse(localStorage.getItem("Favorites"))||[];if(o){const t=o.dataset.action;if(t==="add"){const a=i.some(({_id:n})=>n===m.data._id);if(a&&a.length!==0){l.warning({title:"Warning",message:"Already exist in your favorite list"});return}i.push(m.data),localStorage.setItem("Favorites",JSON.stringify(i)),l.success({title:"Succes",message:"Succesfully added to your favorite list"})}if(t==="delete"){const a=e.target.closest(".modal-window").dataset.id;k(a),y(),r.backdrop.classList.add("hidden"),document.body.classList.remove("noScroll")}}(s||e.target.classList.contains("backdrop"))&&(r.backdrop.classList.add("hidden"),document.body.classList.remove("noScroll"))});l.settings({zindex:999999,position:"bottomRight"});const D=async(e,s)=>{try{m.data=await B(e);const{name:o,bodyPart:i,target:t,rating:a,equipment:n,popularity:f,burnedCalories:b,description:v,gifUrl:h,_id:S}=m.data,$=String(a.toFixed(1)),x=s==="available"?`
+    `).join("");r.favList&&(r.favList.innerHTML=s,r.emptyWrapper.style.display=e.length===0?"flex":"none")};y();const k=e=>{const o=JSON.parse(localStorage.getItem("Favorites")).filter(({_id:i})=>i!==e);localStorage.setItem("Favorites",JSON.stringify(o)),l.success({title:"Succes",message:"Succesfully deleted from your favorite list"})};r.backdrop.addEventListener("click",e=>{const s=e.target.closest(".close-modal-btn"),o=e.target.closest(".favorite-btn"),i=JSON.parse(localStorage.getItem("Favorites"))||[];if(o){const t=o.dataset.action;if(t==="add"){const a=i.some(({_id:n})=>n===m.data._id);if(a&&a.length!==0){l.warning({title:"Warning",message:"Already exist in your favorite list"});return}i.push(m.data),localStorage.setItem("Favorites",JSON.stringify(i)),l.success({title:"Succes",message:"Succesfully added to your favorite list"})}if(t==="delete"){const a=e.target.closest(".modal-window").dataset.id;k(a),y(),r.backdrop.classList.add("hidden"),document.body.classList.remove("noScroll")}}(s||e.target.classList.contains("backdrop"))&&(r.backdrop.classList.add("hidden"),document.body.classList.remove("noScroll"))});document.body.addEventListener("keydown",e=>{!r.backdrop.classList.contains("hidden")&&e.code==="Escape"&&(r.backdrop.classList.add("hidden"),document.body.classList.remove("noScroll"))});l.settings({zindex:999999,position:"bottomRight"});const D=async(e,s)=>{try{m.data=await B(e);const{name:o,bodyPart:i,target:t,rating:a,equipment:n,popularity:f,burnedCalories:b,description:v,gifUrl:h,_id:S}=m.data,$=String(a.toFixed(1)),w=s==="available"?`
             <button type="button" class="favorite-btn" data-action="add">
               Add to favorites
               <svg>
@@ -36,7 +36,7 @@ import{a as u,i as l}from"./vendor-CLTxG5yw.js";(function(){const s=document.cre
               <svg>
                 <use href="${c}#icon-heart-broken"></use>
               </svg>
-            </button>`,w=`
+            </button>`,x=`
     <div class="modal-window" data-id="${S}">
       <button type="button" class="close-modal-btn">
         <svg>
@@ -89,7 +89,7 @@ import{a as u,i as l}from"./vendor-CLTxG5yw.js";(function(){const s=document.cre
 
         <ul class="btns-list">
           <li>
-          ${x}
+          ${w}
           </li>
           <li>
             <button type="button" class="rating-btn">Give a rating</button>
@@ -97,5 +97,5 @@ import{a as u,i as l}from"./vendor-CLTxG5yw.js";(function(){const s=document.cre
         </ul>
       </div>
     </div>
-  `;r.backdrop.innerHTML=w,r.backdrop.classList.remove("hidden"),document.body.classList.add("noScroll")}catch{l.error({title:"Error",message:"Failed to fetch current exercise"}),setTimeout(()=>{r.backdrop.classList.add("hidden")},0)}};export{I as a,O as b,d as c,D as d,k as e,y as f,m as g,r,c as s};
-//# sourceMappingURL=modal-CGazh1_j.js.map
+  `;r.backdrop.innerHTML=x,r.backdrop.classList.remove("hidden"),document.body.classList.add("noScroll")}catch{l.error({title:"Error",message:"Failed to fetch current exercise"}),setTimeout(()=>{r.backdrop.classList.add("hidden")},0)}};export{I as a,O as b,d as c,D as d,k as e,y as f,m as g,r,c as s};
+//# sourceMappingURL=modal-DAWlCa-1.js.map
