@@ -20,10 +20,11 @@
       referrerpolicy="no-referrer"
     />
 
-    <script type="module" crossorigin src="/EnergyFlow/assets/vendor-CLTxG5yw.js"></script>
-    <script type="module" crossorigin src="/EnergyFlow/assets/main-DKSspdkq.js"></script>
-    <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/main-DESnfkKb.css">
+    <script type="module" crossorigin src="/EnergyFlow/favorites_page.js"></script>
+    <link rel="modulepreload" crossorigin href="/EnergyFlow/assets/vendor-CLTxG5yw.js">
+    <link rel="modulepreload" crossorigin href="/EnergyFlow/assets/modal-NorLfKWN.js">
     <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/vendor-DnveWo0P.css">
+    <link rel="stylesheet" crossorigin href="/EnergyFlow/assets/modal-B6WwJdXn.css">
   </head>
   <body class="favorite-pg">
     <header class="header container">
@@ -32,7 +33,7 @@
 
     <button type="button" class="mobile-menu-btn">
       <svg class="menu-btn">
-        <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-mobile-menu"></use>
+        <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-mobile-menu"></use>
       </svg>
     </button>
 
@@ -50,21 +51,21 @@
         <li class="social-item">
           <a href="" rel="nofollow noreferrer noopener" target="_blank">
             <svg class="social-icon">
-              <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-facebook"></use>
+              <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-facebook"></use>
             </svg>
           </a>
         </li>
         <li class="social-item">
           <a href="" rel="nofollow noreferrer noopener" target="_blank">
             <svg class="social-icon">
-              <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-instagram"></use>
+              <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-instagram"></use>
             </svg>
           </a>
         </li>
         <li class="social-item">
           <a href="" rel="nofollow noreferrer noopener" target="_blank">
             <svg class="social-icon">
-              <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-youtube"></use>
+              <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-youtube"></use>
             </svg>
           </a>
         </li>
@@ -77,7 +78,7 @@
 
         <button type="button" class="close-btn">
           <svg class="icon-close-btn">
-            <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-close"></use>
+            <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-close"></use>
           </svg>
         </button>
 
@@ -98,21 +99,21 @@
           <li class="social-item">
             <a href="" rel="nofollow noreferrer noopener" target="_blank">
               <svg class="social-icon">
-                <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-facebook"></use>
+                <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-facebook"></use>
               </svg>
             </a>
           </li>
           <li class="social-item">
             <a href="" rel="nofollow noreferrer noopener" target="_blank">
               <svg class="social-icon">
-                <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-instagram"></use>
+                <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-instagram"></use>
               </svg>
             </a>
           </li>
           <li class="social-item">
             <a href="" rel="nofollow noreferrer noopener" target="_blank">
               <svg class="social-icon">
-                <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-youtube"></use>
+                <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-youtube"></use>
               </svg>
             </a>
           </li>
@@ -133,11 +134,11 @@
       <p class="author-name"></p>
 
       <svg class="quote-icon">
-        <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-man"></use>
+        <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-man"></use>
       </svg>
 
       <svg class="comma-icon">
-        <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-comma"></use>
+        <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-comma"></use>
       </svg>
     </div>
     <div class="image-side block"></div>
@@ -150,7 +151,7 @@
     <div class="fav_daily-wrapper block">
       <div>
         <svg class="daily-icon">
-          <use href="/EnergyFlow/assets/sprite-Cr8MNOq0.svg#icon-dumbbell"></use>
+          <use href="/EnergyFlow/assets/sprite-BaYBotVs.svg#icon-dumbbell"></use>
         </svg>
         <p class="daily-title">110 min</p>
         <p class="fav-daily-text">Daily norm of sports</p>
@@ -165,7 +166,7 @@
   <div class="fav-wrapper block">
     <h1 class="fav-title">Favorites</h1>
 
-    <ul class="fav-list"></ul>
+    <ul class="fav-list" data-type="saved"></ul>
 
     <div class="empty-wrapper">
       <img
@@ -184,6 +185,9 @@
 </section>
 
     </main>
+
+    <div class="backdrop hidden"></div>
+
 
   </body>
 </html>
