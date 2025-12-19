@@ -2,7 +2,7 @@ import { refs } from './refs.js';
 import spritePath from '../img/svg/sprite.svg';
 
 export const renderLocalData = () => {
-  const localData = JSON.parse(localStorage.getItem('Favorites'));
+  const localData = JSON.parse(localStorage.getItem('Favorites')) || [];
   const markup = localData
     .map(({ name, bodyPart, burnedCalories, time, target, _id }) => {
       return `

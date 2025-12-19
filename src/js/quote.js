@@ -6,7 +6,9 @@ import 'izitoast/dist/css/iziToast.min.css';
 const quoteBlock = document.getElementById('quote');
 
 const createQuoteMarkup = async () => {
-  let stored = localStorage.getItem('DailyQuote');
+  const dateNow = new Date().toISOString().slice(0, 10);
+
+  const stored = localStorage.getItem('DailyQuote');
   let data = stored ? JSON.parse(stored) : null;
 
   const dailyQuote = {
@@ -14,12 +16,12 @@ const createQuoteMarkup = async () => {
     author: quoteBlock.querySelector('.author-name'),
   };
 
-  const isExpired = !data || Date.now() - data.dateStamp > 86400000;
+  const isExpired = !data || dateNow !== data.date;
 
   if (isExpired) {
     try {
       const { author, quote } = await getQuote();
-      data = { author, quote, dateStamp: Date.now() };
+      data = { author, quote, date: dateNow };
 
       localStorage.setItem('DailyQuote', JSON.stringify(data));
     } catch (err) {
