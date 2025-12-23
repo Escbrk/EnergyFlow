@@ -51,27 +51,16 @@ refs.backdrop.addEventListener('click', e => {
   if (closeModalBtn || e.currentTarget.classList.contains('backdrop')) {
     const type = closeModalBtn?.dataset.modalType;
 
-    switch (type) {
-      case 'rating':
-        refs.backdrop.querySelector('.exercise')?.classList.remove('hidden');
-        refs.backdrop.querySelector('.rating').innerHTML = '';
-        break;
-
-      case 'exercise':
-        refs.backdrop.classList.add('hidden');
-        refs.backdrop.querySelector('.exercise').innerHTML = '';
-        document.body.classList.remove('noScroll');
-        break;
+    if (type === 'rating' || e.target.classList.contains('rating')) {
+      refs.backdrop.querySelector('.exercise')?.classList.remove('hidden');
+      refs.backdrop.querySelector('.rating').innerHTML = '';
     }
-  }
 
-  console.log('e.target:', e.target);
-  console.log('currentTarget:', e.currentTarget);
-  
-  if (e.target.classList.contains('exercise')) {
-    refs.backdrop.classList.add('hidden');
-    refs.backdrop.querySelector('.exercise').innerHTML = '';
-    document.body.classList.remove('noScroll');
+    if (type === 'exercise' || e.target.classList.contains('exercise')) {
+      refs.backdrop.classList.add('hidden');
+      refs.backdrop.querySelector('.exercise').innerHTML = '';
+      document.body.classList.remove('noScroll');
+    }
   }
 
   if (ratingBtn) {
@@ -102,10 +91,12 @@ refs.backdrop.addEventListener('click', e => {
 
 document.body.addEventListener('keydown', e => {
   if (!refs.backdrop.classList.contains('hidden') && e.code === 'Escape') {
-    if (!document.querySelector('.rating-window')) {
+    if (document.querySelector('.rating-window')) {
+      refs.backdrop.querySelector('.exercise')?.classList.remove('hidden');
+      refs.backdrop.querySelector('.rating').innerHTML = '';
+    } else {
       refs.backdrop.classList.add('hidden');
       document.body.classList.remove('noScroll');
-
       refs.backdrop.querySelector('.exercise').innerHTML = '';
       refs.backdrop.querySelector('.rating').innerHTML = '';
     }
