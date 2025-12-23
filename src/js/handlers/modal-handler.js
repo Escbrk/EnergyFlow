@@ -63,12 +63,15 @@ refs.backdrop.addEventListener('click', e => {
         document.body.classList.remove('noScroll');
         break;
     }
+  }
 
-    if (e.target.classList.contains('exercise')) {
-      refs.backdrop.classList.add('hidden');
-      refs.backdrop.querySelector('.exercise').innerHTML = '';
-      document.body.classList.remove('noScroll');
-    }
+  console.log('e.target:', e.target);
+  console.log('currentTarget:', e.currentTarget);
+  
+  if (e.target.classList.contains('exercise')) {
+    refs.backdrop.classList.add('hidden');
+    refs.backdrop.querySelector('.exercise').innerHTML = '';
+    document.body.classList.remove('noScroll');
   }
 
   if (ratingBtn) {
