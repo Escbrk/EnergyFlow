@@ -8,5 +8,5 @@ export const refs = {
   backdrop: document.querySelector('.backdrop'),
   pagination: document.querySelector('.pagination'),
   favList: document.querySelector('.fav-list'),
-  emptyWrapper: document.querySelector('.empty-wrapper')
+  emptyWrapper: document.querySelector('.empty-wrapper'),
 };

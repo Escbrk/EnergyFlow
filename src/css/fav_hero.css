@@ -1,9 +1,12 @@
 .fav-hero {
-  .container {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
+  @media screen and (max-width: 767px) {
+    .container {
+      margin: 0;
+    }
+  }
+
+  @media screen and (max-width: 1439px) {
+    padding: 0;
   }
 }
 
@@ -49,6 +52,17 @@
       display: flex;
       position: static;
       justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .fav-hero {
+    .container {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }

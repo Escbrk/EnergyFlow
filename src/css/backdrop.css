@@ -8,12 +8,14 @@
   z-index: 999999;
   overflow-y: scroll;
   padding: 20px;
+  min-width: fit-content;
+  min-height: -webkit-fill-available;
 }
 
 .modal-window {
   position: relative;
   background-color: var(--bg-color);
-  padding: 20px;
+  padding: 40px 20px;
   max-width: 335px;
   border-radius: 20px;
   margin: 0 auto;
@@ -39,7 +41,7 @@
 }
 
 .gif-wrapper {
-  width: 295px;
+  max-width: 295px;
   height: 258px;
   border-radius: 12px;
   background-color: #1b1b1b33;
@@ -148,6 +150,26 @@
   padding: 12px 105px;
   line-height: 1.29;
 }
+
+/*! rating window */
+
+.rating-window {
+  background-color: var(--bg-color);
+  padding: 50px;
+  margin: 0 auto;
+  border-radius: 20px;
+  position: relative;
+  height: 335px;
+  max-width: 335px;
+
+  .close-modal-btn {
+    position: absolute;
+    /* top: 14px;
+    right: 14px; */
+  }
+}
+
+/*! _rating window */
 
 @media screen and (min-width: 768px) {
   .backdrop {

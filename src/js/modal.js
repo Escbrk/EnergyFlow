@@ -49,8 +49,8 @@ export const renderExerciseById = async (id, type) => {
             </button>`;
 
     const markup = `
-    <div class="modal-window" data-id="${_id}">
-      <button type="button" class="close-modal-btn">
+    <div class="modal-window" data-id="${_id}" >
+      <button type="button" class="close-modal-btn" data-modal-type="exercise">
         <svg>
           <use href="${spritePath}#icon-close"></use>
         </svg>
@@ -111,7 +111,7 @@ export const renderExerciseById = async (id, type) => {
     </div>
   `;
 
-    refs.backdrop.innerHTML = markup;
+    refs.backdrop.querySelector('.exercise').innerHTML = markup;
     refs.backdrop.classList.remove('hidden');
     document.body.classList.add('noScroll');
   } catch (error) {
