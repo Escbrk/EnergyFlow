@@ -165,11 +165,10 @@
 
 .rating-window {
   background-color: var(--bg-color);
-  padding: 50px;
+  padding: 40px 20px;
   margin: 0 auto;
   border-radius: 20px;
   position: relative;
-  height: 335px;
   max-width: 335px;
 
   .close-modal-btn {
@@ -177,6 +176,53 @@
     /* top: 14px;
     right: 14px; */
   }
+}
+
+.rating-title {
+  color: rgba(27, 27, 27, 0.4);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.rating-score {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.ratingForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ratingSubmitBtn {
+  border-radius: 30px;
+  background: var(--accent-color);
+  display: flex;
+  padding: 12px 131px;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg-color);
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+.rating-email-input,
+.rating-message-input {
+  padding: 12px 14px;
+  border: 1px solid rgba(27, 27, 27, 0.4);
+}
+
+.rating-email-input {
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+
+.rating-message-input {
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 /*! _rating window */

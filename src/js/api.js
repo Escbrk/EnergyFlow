@@ -41,3 +41,6 @@ export const getExerciseById = async id => {
 
   return data;
 };
+
+export const sendRating = async (id, data) =>
+  await axios.patch(`exercises/${id}/rating`, data);
