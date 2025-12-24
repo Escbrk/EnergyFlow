@@ -6,6 +6,8 @@ import { renderLocalData } from '../renderLocalData.js';
 import { deleteItem } from './deleteHandler.js';
 import { ratingForm } from '../ratingForm.js';
 import { sendRating } from '../api.js';
+import { backToExercise } from './backToExercise.js';
+import { closeAllModals } from './closeAllModals.js';
 
 refs.backdrop.addEventListener('click', async e => {
   const closeModalBtn = e.target.closest('.close-modal-btn');
@@ -44,8 +46,7 @@ refs.backdrop.addEventListener('click', async e => {
 
         deleteItem(id);
         renderLocalData();
-        refs.backdrop.classList.add('hidden');
-        document.body.classList.remove('noScroll');
+        closeAllModals();
         break;
     }
   }
@@ -54,14 +55,11 @@ refs.backdrop.addEventListener('click', async e => {
     const type = closeModalBtn?.dataset.modalType;
 
     if (type === 'rating' || e.target.classList.contains('rating')) {
-      refs.backdrop.querySelector('.exercise')?.classList.remove('hidden');
-      refs.backdrop.querySelector('.rating').innerHTML = '';
+      backToExercise();
     }
 
     if (type === 'exercise' || e.target.classList.contains('exercise')) {
-      refs.backdrop.classList.add('hidden');
-      refs.backdrop.querySelector('.exercise').innerHTML = '';
-      document.body.classList.remove('noScroll');
+      closeAllModals();
     }
   }
 
@@ -78,17 +76,15 @@ refs.backdrop.addEventListener('click', async e => {
     const form = e.target.closest('.ratingForm');
     const formData = new FormData(form);
     formData.delete('message');
+
     const data = Object.fromEntries(formData);
     data.rate = Number(data.rate);
 
     try {
       await sendRating(id, data);
 
-      refs.backdrop.classList.add('hidden');
-      refs.backdrop.querySelector('.exercise').classList.remove('hidden');
-      refs.backdrop.querySelector('.rating').innerHTML = '';
-      refs.backdrop.querySelector('.exercise').innerHTML = '';
-      document.body.classList.remove('noScroll');
+      backToExercise();
+      closeAllModals();
 
       iziToast.success({
         title: 'Succes',
@@ -108,13 +104,9 @@ refs.backdrop.addEventListener('click', async e => {
 document.body.addEventListener('keydown', e => {
   if (!refs.backdrop.classList.contains('hidden') && e.code === 'Escape') {
     if (document.querySelector('.rating-window')) {
-      refs.backdrop.querySelector('.exercise').classList.remove('hidden');
-      refs.backdrop.querySelector('.rating').innerHTML = '';
+      backToExercise();
     } else {
-      refs.backdrop.classList.add('hidden');
-      document.body.classList.remove('noScroll');
-      refs.backdrop.querySelector('.exercise').innerHTML = '';
-      refs.backdrop.querySelector('.rating').innerHTML = '';
+      closeAllModals();
     }
   }
 });
