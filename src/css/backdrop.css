@@ -237,15 +237,15 @@
   flex-direction: row;
   column-gap: 8px;
 
-  svg {
-    width: 24px;
-    height: 24px;
-    fill: #1b1b1b33;
-  }
-
-  input:checked + svg {
+  input:checked + .rating-icon {
     fill: #eea10c;
   }
+}
+
+.rating-icon {
+  width: 24px;
+  height: 24px;
+  fill: #1b1b1b33;
 }
 
 /*! _rating window */
