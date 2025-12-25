@@ -9,4 +9,5 @@ export const refs = {
   pagination: document.querySelector('.pagination'),
   favList: document.querySelector('.fav-list'),
   emptyWrapper: document.querySelector('.empty-wrapper'),
+  quoteWrapper: document.querySelector('.quote-wrapper'),
 };

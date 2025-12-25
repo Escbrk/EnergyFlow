@@ -1,4 +1,6 @@
 import { getQuote } from './api.js';
+import { refs } from './refs.js';
+import { loader, quoteLoader } from './handlers/loader.js';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -17,6 +19,7 @@ const createQuoteMarkup = async () => {
   };
 
   const isExpired = !data || dateNow !== data.date;
+  refs.quoteWrapper.innerHTML = quoteLoader();
 
   if (isExpired) {
     try {
@@ -40,8 +43,10 @@ const createQuoteMarkup = async () => {
   }
 
   if (dailyQuote.text && dailyQuote.author) {
-    dailyQuote.text.textContent = data.quote;
-    dailyQuote.author.textContent = data.author;
+    refs.quoteWrapper.innerHTML = `
+    <p class="quote-text">${data.quote}</p>
+    <p class="author-name">${data.author}</p>
+    `;
   }
 };
 

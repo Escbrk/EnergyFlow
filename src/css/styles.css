@@ -1,3 +1,5 @@
+@import url(./base.css);
+
 @import url(./header.css);
 @import url(./hero.css);
 @import url(./quote.css);
@@ -12,5 +14,3 @@
 @import url(./fav_hero.css);
 @import url(./fav_daily-norm.css);
 @import url(./favorites.css);
-
-@import url(./base.css);
