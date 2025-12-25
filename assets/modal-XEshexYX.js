@@ -156,4 +156,4 @@ import{a as m,i as u}from"./vendor-CLTxG5yw.js";(function(){const t=document.cre
       </div>
     </div>
   `;i.backdrop.querySelector(".exercise").innerHTML=L,i.backdrop.classList.remove("hidden"),document.body.classList.add("noScroll")}catch{u.error({title:"Error",message:"Failed to fetch current exercise"}),setTimeout(()=>{i.backdrop.classList.add("hidden")},0)}};export{N as a,P as b,y as c,H as d,I as e,x as f,q as g,W as l,i as r,c as s};
-//# sourceMappingURL=modal-CIVicbG7.js.map
+//# sourceMappingURL=modal-XEshexYX.js.map
