@@ -10,6 +10,7 @@ import { globalState } from './globalState.js';
 import { loader } from './handlers/loader.js';
 
 export const renderExercise = async (query, choosenPage) => {
+  refs.exerciseSearchForm.classList.add('hidden');
   refs.exerciseList.innerHTML = `<li>${loader()}</li>`;
 
   try {
@@ -28,12 +29,13 @@ export const renderExercise = async (query, choosenPage) => {
     refs.exerciseList.innerHTML = markup;
     refs.categoryContainer.innerHTML = '';
 
-    refs.exerciseSearchForm.classList.add('hidden');
     document.querySelector('.search-input').value = '';
 
     exercisePagination(page, totalPages);
     setActivePage(page);
   } catch ({ message }) {
+    refs.exerciseList.innerHTML = '';
+
     iziToast.error({
       title: 'Error',
       message: `Failet to fetch exercises: ${message}`,

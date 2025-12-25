@@ -1,9 +1,5 @@
 import spritePath from '../img/svg/sprite.svg';
 
-const qwe = `  <svg>
-                <use href="${spritePath}#icon-star">1</use>
-              </svg>`;
-
 export const ratingForm = id => `
         <div class="rating-window" data-id=${id}>
           <button type="button" class="close-modal-btn" data-modal-type="rating">
@@ -15,36 +11,36 @@ export const ratingForm = id => `
 
           <form class="ratingForm">
             <div class="rating-score">
-              <span>0.0</span>
+              <p class="rating-count">0.0</p>
 
               <div class="radio-elements">
-                  <label>
+                  <label class="rating-star-label">
                   <input type="radio" name="rate" value="1" required class="visually-hidden">
-                    <svg>
+                    <svg class="rating-icon">
                       <use href="${spritePath}#icon-star">1</use>
                     </svg>
                   </label>
-                  <label>
+                  <label class="rating-star-label">
                   <input type="radio" name="rate" value="2" required class="visually-hidden">
-                    <svg>
+                    <svg class="rating-icon">
                       <use href="${spritePath}#icon-star">1</use>
                     </svg>
                   </label>
-                  <label>
+                  <label class="rating-star-label">
                   <input type="radio" name="rate" value="3" required class="visually-hidden">
-                    <svg>
+                    <svg class="rating-icon">
                       <use href="${spritePath}#icon-star">1</use>
                     </svg>
                   </label>
-                  <label>
+                  <label class="rating-star-label">
                   <input type="radio" name="rate" value="4" required class="visually-hidden">
-                    <svg>
+                    <svg class="rating-icon">
                       <use href="${spritePath}#icon-star">1</use>
                     </svg>
                   </label>
-                  <label>
+                  <label class="rating-star-label">
                   <input type="radio" name="rate" value="5" required class="visually-hidden">
-                    <svg>
+                    <svg class="rating-icon">
                       <use href="${spritePath}#icon-star">1</use>
                     </svg>
                   </label>

@@ -13,6 +13,7 @@ refs.backdrop.addEventListener('click', async e => {
   const closeModalBtn = e.target.closest('.close-modal-btn');
   const favoritesBtn = e.target.closest('.favorite-btn');
   const ratingBtn = e.target.closest('.rating-btn');
+  const ratingStarBtn = e.target.closest('.rating-star-label');
   const ratingSubmitBtn = e.target.closest('.ratingSubmitBtn');
   let id = e.target.closest('.modal-window')?.dataset.id;
 
@@ -97,6 +98,20 @@ refs.backdrop.addEventListener('click', async e => {
       });
     } finally {
       ratingSubmitBtn.disabled = false;
+    }
+  }
+
+  if (ratingStarBtn) {
+    if (e.target.tagName === 'INPUT') return;
+
+    const score = ratingStarBtn.querySelector('input').value;
+    document.querySelector('.rating-count').innerHTML = score;
+
+    const elements = [...document.querySelectorAll('.rating-icon')];
+    elements.forEach(el => (el.style.fill = '#1b1b1b33'));
+
+    for (let i = 0; i < score; i++) {
+      elements[i].style.fill = '#eea10c';
     }
   }
 });

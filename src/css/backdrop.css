@@ -191,7 +191,11 @@
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  column-gap: 7px;
+  column-gap: 15px;
+}
+
+.rating-count {
+  width: 8px;
 }
 
 .ratingForm {
@@ -236,7 +240,7 @@
   svg {
     width: 24px;
     height: 24px;
-    fill: rgba(27, 27, 27, 0.2);
+    fill: #1b1b1b33;
   }
 
   input:checked + svg {
