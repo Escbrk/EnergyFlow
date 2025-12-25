@@ -189,6 +189,9 @@
   font-size: 12px;
   line-height: 1.5;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
 }
 
 .ratingForm {
@@ -223,6 +226,22 @@
 .rating-message-input {
   border-radius: 15px;
   margin-bottom: 20px;
+}
+
+.radio-elements {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(27, 27, 27, 0.2);
+  }
+
+  input:checked + svg {
+    fill: #eea10c;
+  }
 }
 
 /*! _rating window */

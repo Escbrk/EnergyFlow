@@ -17,12 +17,37 @@ export const ratingForm = id => `
             <div class="rating-score">
               <span>0.0</span>
 
-              <div>
-                  <label><input type="radio" name="rate" value="1" required></label>
-                  <label><input type="radio" name="rate" value="2" required></label>
-                  <label><input type="radio" name="rate" value="3" required></label>
-                  <label><input type="radio" name="rate" value="4" required></label>
-                  <label><input type="radio" name="rate" value="5" required></label>
+              <div class="radio-elements">
+                  <label>
+                  <input type="radio" name="rate" value="1" required class="visually-hidden">
+                    <svg>
+                      <use href="${spritePath}#icon-star">1</use>
+                    </svg>
+                  </label>
+                  <label>
+                  <input type="radio" name="rate" value="2" required class="visually-hidden">
+                    <svg>
+                      <use href="${spritePath}#icon-star">1</use>
+                    </svg>
+                  </label>
+                  <label>
+                  <input type="radio" name="rate" value="3" required class="visually-hidden">
+                    <svg>
+                      <use href="${spritePath}#icon-star">1</use>
+                    </svg>
+                  </label>
+                  <label>
+                  <input type="radio" name="rate" value="4" required class="visually-hidden">
+                    <svg>
+                      <use href="${spritePath}#icon-star">1</use>
+                    </svg>
+                  </label>
+                  <label>
+                  <input type="radio" name="rate" value="5" required class="visually-hidden">
+                    <svg>
+                      <use href="${spritePath}#icon-star">1</use>
+                    </svg>
+                  </label>
               </div>
             </div>
             <label for="email"></label>

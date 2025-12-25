@@ -2,6 +2,7 @@ import { globalState } from './globalState.js';
 import { refs } from './refs.js';
 import { renderExercise, renderInfo } from './exercises.js';
 import { renderExerciseById } from './modal.js';
+import exercisePagination from './pagination.js';
 
 const filterList = document.querySelector('.filter-list');
 
@@ -21,6 +22,7 @@ filterList.addEventListener('click', e => {
 
     e.target.classList.add('active');
     e.target.disabled = true;
+    exercisePagination();
     renderExercise(globalState.query);
   }
 });
@@ -38,6 +40,7 @@ refs.exerciseList.addEventListener('click', async e => {
       el.disabled = false;
     });
 
+    exercisePagination();
     await renderInfo({
       category: globalState.category,
       query: globalState.query,
@@ -62,6 +65,8 @@ refs.exerciseSearchForm.addEventListener('submit', async e => {
 
   const formData = new FormData(refs.exerciseSearchForm);
   globalState.searchTarget = Object.fromEntries(formData).search.toLowerCase();
+
+  exercisePagination();
   const status = await renderInfo({
     category: globalState.category,
     query: globalState.query,

@@ -7,9 +7,11 @@ import exercisePagination from './pagination.js';
 import { setActivePage } from './activePage.js';
 import spritePath from '../img/svg/sprite.svg';
 import { globalState } from './globalState.js';
-
+import { loader } from './handlers/loader.js';
 
 export const renderExercise = async (query, choosenPage) => {
+  refs.exerciseList.innerHTML = `<li>${loader()}</li>`;
+
   try {
     const { results, totalPages, page } = await getExercise(query, choosenPage);
     const markup = results
@@ -45,6 +47,8 @@ export const renderInfo = async ({
   currentPage,
   searchTarget,
 }) => {
+  refs.exerciseList.innerHTML = `<li>${loader()}</li>`;
+
   try {
     const { results, totalPages, page } = await getExerciseInfo(
       category,
