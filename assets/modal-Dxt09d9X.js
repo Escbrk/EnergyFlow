@@ -156,4 +156,4 @@ import{a as m,i as u}from"./vendor-CLTxG5yw.js";(function(){const t=document.cre
       </div>
     </div>
   `;i.backdrop.querySelector(".exercise").innerHTML=L,i.backdrop.classList.remove("hidden"),document.body.classList.add("noScroll")}catch{u.error({title:"Error",message:"Failed to fetch current exercise"}),setTimeout(()=>{i.backdrop.classList.add("hidden")},0)}};export{N as a,P as b,y as c,A as d,W as e,I as f,q as g,x as h,H as l,i as r,c as s};
-//# sourceMappingURL=modal-BSw2kMJS.js.map
+//# sourceMappingURL=modal-Dxt09d9X.js.map
