@@ -39,7 +39,7 @@ import{a as m,i as u}from"./vendor-CLTxG5yw.js";(function(){const t=document.cre
 
           <form class="ratingForm">
             <div class="rating-score">
-              <p class="rating-count">0.0</p>
+              <p class="rating-count">0</p>
 
               <div class="radio-elements">
                   <label class="rating-star-label">
@@ -156,4 +156,4 @@ import{a as m,i as u}from"./vendor-CLTxG5yw.js";(function(){const t=document.cre
       </div>
     </div>
   `;i.backdrop.querySelector(".exercise").innerHTML=L,i.backdrop.classList.remove("hidden"),document.body.classList.add("noScroll")}catch{u.error({title:"Error",message:"Failed to fetch current exercise"}),setTimeout(()=>{i.backdrop.classList.add("hidden")},0)}};export{N as a,P as b,y as c,H as d,I as e,x as f,q as g,W as l,i as r,c as s};
-//# sourceMappingURL=modal-BqKVWFEo.js.map
+//# sourceMappingURL=modal-VqSpg0bU.js.map
