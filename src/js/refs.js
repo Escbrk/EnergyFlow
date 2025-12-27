@@ -10,4 +10,5 @@ export const refs = {
   favList: document.querySelector('.fav-list'),
   emptyWrapper: document.querySelector('.empty-wrapper'),
   quoteWrapper: document.querySelector('.quote-wrapper'),
+  footerForm: document.querySelector('.footer-form'),
 };
