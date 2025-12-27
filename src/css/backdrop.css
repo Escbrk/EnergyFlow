@@ -13,7 +13,7 @@
 .rating,
 .exercise {
   overflow-y: scroll;
-  padding: 20px;
+  padding: 40px 20px;
   width: 100%;
   height: 100%;
 
