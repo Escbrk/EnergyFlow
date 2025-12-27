@@ -15,7 +15,8 @@ export const renderExercise = async (query, choosenPage) => {
 
   try {
     const { results, totalPages, page } = await getExercise(query, choosenPage);
-    const markup = results
+    const markup =
+      results
       .map(
         ({ imgUrl, name, filter }) => `
           <li class="exercise-item" style="--img: url(${imgUrl})">
@@ -25,6 +26,10 @@ export const renderExercise = async (query, choosenPage) => {
           `
       )
       .join('');
+
+    if (!results.length) {
+      throw new Error();
+    }
 
     refs.exerciseList.innerHTML = markup;
     refs.categoryContainer.innerHTML = '';
@@ -38,7 +43,7 @@ export const renderExercise = async (query, choosenPage) => {
 
     iziToast.error({
       title: 'Error',
-      message: `Failet to fetch exercises: ${message}`,
+      message: `Failet to fetch exercises ${message}`,
     });
   }
 };
@@ -122,5 +127,8 @@ export const renderInfo = async ({
       title: 'Error',
       message: 'Failed to fetch information about exercises',
     });
+
+    refs.exerciseList.innerHTML = '';
+    refs.exerciseSearchForm.style.display = 'none';
   }
 };

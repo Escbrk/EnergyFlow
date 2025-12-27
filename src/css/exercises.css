@@ -1,6 +1,7 @@
 .exercises-section {
   background-color: var(--main-color);
   padding: 40px 20px;
+  position: relative;
 }
 
 .exercise-title {

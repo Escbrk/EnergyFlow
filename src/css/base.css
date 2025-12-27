@@ -8,12 +8,17 @@
 }
 
 .loader {
-  position: relative;
+  position: absolute;
   display: inline-block;
   top: 50%;
   left: 50%;
   transform: translate(-50%, 50%);
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    transform: translate(-50%, 100%);
+  }
 }
+
 .loader::before {
   content: 'Loading';
   color: var(--accent-color);
