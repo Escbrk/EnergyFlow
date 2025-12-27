@@ -13,8 +13,10 @@ document
 
 refs.mobileMenuBtn.addEventListener('click', () => {
   refs.mobileMenu.classList.remove('hidden');
+  document.body.classList.add('noScroll');
 });
 
 refs.closeMobileMenuBtn.addEventListener('click', () => {
   refs.mobileMenu.classList.add('hidden');
+  document.body.classList.remove('noScroll');
 });
