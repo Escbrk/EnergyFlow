@@ -11,7 +11,7 @@ export const ratingForm = id => `
 
           <form class="ratingForm">
             <div class="rating-score">
-              <p class="rating-count">0.0</p>
+              <p class="rating-count">0</p>
 
               <div class="radio-elements">
                   <label class="rating-star-label">

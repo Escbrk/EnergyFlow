@@ -44,3 +44,5 @@ export const getExerciseById = async id => {
 
 export const sendRating = async (id, data) =>
   await axios.patch(`exercises/${id}/rating`, data);
+
+export const subscribe = async email => await axios.post('subscription', email);

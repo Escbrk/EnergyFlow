@@ -6,13 +6,13 @@
   height: 100vh;
   background-color: #1b1b1b99;
   z-index: 999999;
-  overflow-y: scroll;
   min-width: fit-content;
   min-height: -webkit-fill-available;
 }
 
 .rating,
 .exercise {
+  overflow-y: scroll;
   padding: 20px;
   width: 100%;
   height: 100%;
@@ -29,6 +29,11 @@
   max-width: 335px;
   border-radius: 20px;
   margin: 0 auto;
+
+  @media screen and (max-width: 767px) {
+    height: 100%;
+    overflow: scroll;
+  }
 }
 
 .close-modal-btn {
@@ -143,12 +148,27 @@
   border-radius: 30px;
   font-size: 14px;
   line-height: 1.29;
+  justify-content: center;
 
   svg {
     width: 18px;
     height: 18px;
     fill: transparent;
     stroke: var(--bg-color);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .favorite-btn {
+    width: 100%;
+  }
+
+  .btns-list {
+    flex-direction: column;
+
+    li {
+      width: 100%;
+    }
   }
 }
 
@@ -191,7 +211,7 @@
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  column-gap: 15px;
+  column-gap: 7px;
 }
 
 .rating-count {
@@ -218,19 +238,21 @@
 
 .rating-email-input,
 .rating-message-input {
-  padding: 12px 14px;
   border: 1px solid rgba(27, 27, 27, 0.4);
+  line-height: 1.29;
 }
 
 .rating-email-input {
   border-radius: 30px;
   margin-bottom: 10px;
+  padding: 12px 14px;
 }
 
 .rating-message-input {
   border-radius: 15px;
   margin-bottom: 20px;
   resize: none;
+  padding: 12px 14px 63px;
 }
 
 .radio-elements {
@@ -325,6 +347,50 @@
       bottom: -8px;
     }
   }
+
+  /*! rating window */
+
+  .rating-window {
+    padding: 50px;
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .rating-score {
+    margin-bottom: 32px;
+  }
+
+  .rating-count {
+    width: 8px;
+  }
+
+  .ratingForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ratingSubmitBtn {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 12px 156px;
+  }
+
+  .rating-email-input,
+  .rating-message-input {
+    line-height: 1.5;
+  }
+
+  .rating-email-input {
+    margin-bottom: 16px;
+  }
+
+  .rating-message-input {
+    margin-bottom: 32px;
+    padding-bottom: 70px;
+  }
+
+  /*! _rating window */
 }
 
 @media screen and (min-width: 1440px) {
