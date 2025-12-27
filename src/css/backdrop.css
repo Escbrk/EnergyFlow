@@ -12,10 +12,9 @@
 
 .rating,
 .exercise {
-  overflow-y: scroll;
-  padding: 40px 20px;
+  padding: 20px;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
 
   display: flex;
   justify-content: center;
