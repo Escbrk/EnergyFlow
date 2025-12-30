@@ -1,2 +1,2 @@
-import{r as c,d,f as n,h as i}from"./assets/modal-D59A1zp3.js";import"./assets/vendor-CLTxG5yw.js";c.favList.addEventListener("click",t=>{const e=t.target.closest(".exercise-info").dataset.id,s=t.target.closest(".startBtn"),r=t.target.closest(".deleteBtn");if(s){const a=t.currentTarget.dataset.type;d(e,a)}r&&(n(e),i())});
+import{r as d,d as n,f as i,h as o}from"./assets/modal-B_pcS1He.js";import"./assets/vendor-CLTxG5yw.js";d.favList.addEventListener("click",t=>{var s;const e=(s=t.target.closest(".exercise-info"))==null?void 0:s.dataset.id,r=t.target.closest(".startBtn"),a=t.target.closest(".deleteBtn");if(r){const c=t.currentTarget.dataset.type;n(e,c)}a&&(i(e),o())});
 //# sourceMappingURL=favorites_page.js.map
