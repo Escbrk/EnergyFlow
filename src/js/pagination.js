@@ -64,6 +64,12 @@ refs.pagination.addEventListener('click', e => {
     const currentPage = parseFloat(e.target.textContent);
     const target = document.querySelector('.exercise-info');
 
+    const exerciseSection = document.querySelector('.exercises-section');
+
+    if (exerciseSection) {
+      exerciseSection.scrollIntoView();
+    }
+
     target
       ? renderInfo({
           category: globalState.category,

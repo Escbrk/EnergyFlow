@@ -54,6 +54,12 @@
       rgba(16, 16, 16, 0.7) 100%
     ),
     var(--img) lightgray -16.825px 0.844px / 121.36% 108.504% no-repeat;
+
+  transition: scale linear 250ms;
+
+  &:hover {
+    scale: 1.05;
+  }
 }
 
 .exercise-list {

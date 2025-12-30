@@ -15,8 +15,7 @@ export const renderExercise = async (query, choosenPage) => {
 
   try {
     const { results, totalPages, page } = await getExercise(query, choosenPage);
-    const markup =
-      results
+    const markup = results
       .map(
         ({ imgUrl, name, filter }) => `
           <li class="exercise-item" style="--img: url(${imgUrl})">
@@ -36,7 +35,7 @@ export const renderExercise = async (query, choosenPage) => {
 
     document.querySelector('.search-input').value = '';
 
-    exercisePagination(page, totalPages);
+    exercisePagination(Number(page), totalPages);
     setActivePage(page);
   } catch ({ message }) {
     refs.exerciseList.innerHTML = '';

@@ -1,7 +1,6 @@
 export const globalState = {
-  query: '',
+  query: undefined,
   category: '',
   searchTarget: '',
   data: null,
 };
-

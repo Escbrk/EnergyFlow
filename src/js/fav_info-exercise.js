@@ -4,7 +4,7 @@ import { refs } from './refs.js';
 import { renderLocalData } from './renderLocalData.js';
 
 refs.favList.addEventListener('click', e => {
-  const id = e.target.closest('.exercise-info').dataset.id;
+  const id = e.target.closest('.exercise-info')?.dataset.id;
   const target = e.target.closest('.startBtn');
   const deleteBtn = e.target.closest('.deleteBtn');
 

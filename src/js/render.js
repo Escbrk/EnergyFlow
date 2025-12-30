@@ -27,7 +27,7 @@ filterList.addEventListener('click', e => {
   }
 });
 
-renderExercise();
+renderExercise(globalState.query);
 
 refs.exerciseList.addEventListener('click', async e => {
   const target = e.target.closest('.exercise-item');
