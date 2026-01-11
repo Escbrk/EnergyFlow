@@ -3,4 +3,5 @@ export const globalState = {
   category: '',
   searchTarget: '',
   data: null,
+  currentPage: location.pathname.split('/').pop() || 'index.html',
 };

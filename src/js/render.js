@@ -1,16 +1,16 @@
-import { globalState } from './globalState.js';
+import { renderExerciseById } from './modal.js';
+import { exercisePagination } from './pagination.js';
 import { refs } from './refs.js';
 import { renderExercise, renderInfo } from './exercises.js';
-import { renderExerciseById } from './modal.js';
-import exercisePagination from './pagination.js';
+import { globalState } from './globalState.js';
 
-const filterList = document.querySelector('.filter-list');
+renderExercise(globalState.query);
 
 const exerciseFilterBtn = [
-  ...filterList.querySelectorAll('button[data-filter]'),
+  ...refs.filterList.querySelectorAll('button[data-filter]'),
 ];
 
-filterList.addEventListener('click', e => {
+refs.filterList.addEventListener('click', e => {
   const target = e.target.dataset.filter;
   globalState.query = e.target.textContent.trim();
 
@@ -27,12 +27,12 @@ filterList.addEventListener('click', e => {
   }
 });
 
-renderExercise(globalState.query);
-
 refs.exerciseList.addEventListener('click', async e => {
   const target = e.target.closest('.exercise-item');
 
   if (target) {
+    document.querySelector('.exercises-section').scrollIntoView();
+
     globalState.query = target.children[0].textContent.toLowerCase();
     globalState.category = target.children[1].textContent;
 

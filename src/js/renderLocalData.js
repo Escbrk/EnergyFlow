@@ -1,8 +1,13 @@
 import { refs } from './refs.js';
 import spritePath from '../img/svg/sprite.svg';
+import { localDataPagination } from './handlers/localDataPagination';
+import { globalState } from './globalState.js';
+import { renderExercise, renderInfo } from './exercises.js';
+import { setActivePage } from './activePage';
 
-export const renderLocalData = () => {
-  const localData = JSON.parse(localStorage.getItem('Favorites')) || [];
+let activePage = 1;
+
+export const renderLocalData = localData => {
   const markup = localData
     .map(({ name, bodyPart, burnedCalories, time, target, _id }) => {
       return `
@@ -39,7 +44,42 @@ export const renderLocalData = () => {
   if (refs.favList) {
     refs.favList.innerHTML = markup;
     refs.emptyWrapper.style.display = localData.length === 0 ? 'flex' : 'none';
+    setActivePage(activePage);
   }
 };
 
-renderLocalData();
+if (globalState.currentPage !== 'index.html') {
+  renderLocalData(localDataPagination(activePage));
+}
+
+refs.pagination.addEventListener('click', e => {
+  if (e.target.classList.contains('pages_list-btn')) {
+    const currentPage = parseFloat(e.target.textContent);
+
+    if (isNaN(currentPage)) return;
+
+    const target = document.querySelector('.exercise-info');
+    const exerciseSection = document.querySelector('.exercises-section');
+    const favWrapper = document.querySelector('.fav-wrapper');
+
+    if (exerciseSection) {
+      exerciseSection.scrollIntoView();
+
+      target
+        ? renderInfo({
+            category: globalState.category,
+            query: globalState.query,
+            currentPage,
+            searchTarget: globalState.searchTarget,
+          })
+        : renderExercise(globalState.query, currentPage);
+    }
+
+    if (favWrapper) {
+      favWrapper.scrollIntoView();
+
+      activePage = currentPage;
+      renderLocalData(localDataPagination(activePage));
+    }
+  }
+});

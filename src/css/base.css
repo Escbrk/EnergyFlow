@@ -199,3 +199,8 @@ a {
     }
   }
 }
+
+.arrow-to-top {
+  background-color: var(--accent-color);
+  border-radius: 50%;
+}

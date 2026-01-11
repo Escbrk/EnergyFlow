@@ -8,6 +8,7 @@ import { ratingForm } from '../ratingForm.js';
 import { sendRating } from '../api.js';
 import { backToExercise } from './backToExercise.js';
 import { closeAllModals } from './closeAllModals.js';
+import { emailChecker } from './emailChecker.js';
 
 refs.backdrop.addEventListener('click', async e => {
   const closeModalBtn = e.target.closest('.close-modal-btn');
@@ -17,7 +18,7 @@ refs.backdrop.addEventListener('click', async e => {
   const ratingSubmitBtn = e.target.closest('.ratingSubmitBtn');
   let id = e.target.closest('.modal-window')?.dataset.id;
 
-  const savedData = JSON.parse(localStorage.getItem('Favorites')) || [];
+  const savedData = JSON.parse(localStorage.getItem('favorites')) || [];
 
   if (favoritesBtn) {
     const action = favoritesBtn.dataset.action;
@@ -35,7 +36,7 @@ refs.backdrop.addEventListener('click', async e => {
         }
 
         savedData.push(globalState.data);
-        localStorage.setItem('Favorites', JSON.stringify(savedData));
+        localStorage.setItem('favorites', JSON.stringify(savedData));
         iziToast.success({
           title: 'Succes',
           message: 'Succesfully added to your favorite list',
@@ -82,6 +83,8 @@ refs.backdrop.addEventListener('click', async e => {
     data.rate = Number(data.rate);
 
     try {
+      emailChecker(data.email);
+
       await sendRating(id, data);
 
       backToExercise();
@@ -94,7 +97,8 @@ refs.backdrop.addEventListener('click', async e => {
     } catch (err) {
       iziToast.error({
         title: 'Error',
-        message: err.response.data.message,
+        message:
+          err.response?.data?.message || err.message || 'Someting went wrong!',
       });
     } finally {
       ratingSubmitBtn.disabled = false;

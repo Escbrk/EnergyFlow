@@ -200,6 +200,14 @@
   .header-social {
     .social-item {
       border: 1px solid rgba(126, 132, 127, 0.2);
+
+      &:hover {
+        border: 1px solid rgba(95, 101, 96, 0.2);
+      }
+
+      &:hover .social-icon {
+        fill: #5f6560;
+      }
     }
 
     .social-icon {

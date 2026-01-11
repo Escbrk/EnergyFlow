@@ -11,4 +11,5 @@ export const refs = {
   emptyWrapper: document.querySelector('.empty-wrapper'),
   quoteWrapper: document.querySelector('.quote-wrapper'),
   footerForm: document.querySelector('.footer-form'),
+  filterList: document.querySelector('.filter-list'),
 };

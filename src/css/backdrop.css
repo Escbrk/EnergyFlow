@@ -155,6 +155,10 @@
     fill: transparent;
     stroke: var(--bg-color);
   }
+
+  &:hover {
+    background-color: #5f6560;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -178,6 +182,11 @@
   outline: 1px solid #1b1b1b;
   padding: 12px 105px;
   line-height: 1.29;
+
+  &:hover {
+    color: var(--accent-color);
+    outline: 1px solid var(--accent-color);
+  }
 }
 
 /*! rating window */

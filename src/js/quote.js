@@ -1,6 +1,6 @@
 import { getQuote } from './api.js';
 import { refs } from './refs.js';
-import { loader, quoteLoader } from './handlers/loader.js';
+import { quoteLoader } from './handlers/loader.js';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';

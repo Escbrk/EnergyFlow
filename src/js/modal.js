@@ -42,9 +42,9 @@ export const renderExerciseById = async (id, type) => {
               </svg>
             </button>`
         : `<button type="button" class="favorite-btn" data-action="delete">
-              Remove
+              Remove from
               <svg>
-                <use href="${spritePath}#icon-heart-broken"></use>
+                <use href="${spritePath}#icon-heart"></use>
               </svg>
             </button>`;
 

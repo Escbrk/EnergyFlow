@@ -1,12 +1,12 @@
 import { refs } from './refs.js';
-const currentPage = location.pathname.split('/').pop() || 'index.html';
+import { globalState } from './globalState.js';
 
 document
   .querySelectorAll('.header-menu-link, .mobile-nav-link')
   .forEach(link => {
     const href = link.getAttribute('href').split('/').pop();
 
-    if (currentPage.endsWith(href)) {
+    if (globalState.currentPage.endsWith(href)) {
       link.classList.add('active');
     }
   });

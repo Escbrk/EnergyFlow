@@ -1,8 +1,6 @@
 import { refs } from './refs.js';
-import { globalState } from './globalState.js';
-import { renderExercise, renderInfo } from './exercises.js';
 
-const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
+export const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
   const half = Math.floor(maxVisible / 2);
 
   let start = current - half;
@@ -30,7 +28,10 @@ const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
   //! Left "..."
   if (start > 1) {
     result.push(1); //! First page
-    result.push('...'); //! Spacer
+
+    if (start > 2) {
+      result.push('...'); //! Spacer
+    }
   }
 
   //! Main pages
@@ -39,7 +40,10 @@ const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
   //! Right "..."
   if (end < total) {
     result.push('...'); //! Spacer
-    result.push(total); //! Last page
+
+    if (end < total - 1) {
+      result.push(total); //! Last page
+    }
   }
 
   const paginationBtns = result
@@ -58,27 +62,3 @@ const exercisePagination = (current = 0, total = 0, maxVisible = 3) => {
     }
   });
 };
-
-refs.pagination.addEventListener('click', e => {
-  if (e.target.classList.contains('pages_list-btn')) {
-    const currentPage = parseFloat(e.target.textContent);
-    const target = document.querySelector('.exercise-info');
-
-    const exerciseSection = document.querySelector('.exercises-section');
-
-    if (exerciseSection) {
-      exerciseSection.scrollIntoView();
-    }
-
-    target
-      ? renderInfo({
-          category: globalState.category,
-          query: globalState.query,
-          currentPage,
-          searchTarget: globalState.searchTarget,
-        })
-      : renderExercise(globalState.query, currentPage);
-  }
-});
-
-export default exercisePagination;

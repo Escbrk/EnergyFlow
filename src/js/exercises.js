@@ -3,7 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { getExercise, getExerciseInfo } from './api.js';
 import { capitalize } from './capitalize.js';
 import { refs } from './refs.js';
-import exercisePagination from './pagination.js';
+import { exercisePagination } from './pagination.js';
 import { setActivePage } from './activePage.js';
 import spritePath from '../img/svg/sprite.svg';
 import { globalState } from './globalState.js';
@@ -35,7 +35,8 @@ export const renderExercise = async (query, choosenPage) => {
 
     document.querySelector('.search-input').value = '';
 
-    exercisePagination(Number(page), totalPages);
+    exercisePagination(page, totalPages);
+
     setActivePage(page);
   } catch ({ message }) {
     refs.exerciseList.innerHTML = '';
