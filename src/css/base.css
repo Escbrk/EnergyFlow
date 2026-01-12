@@ -200,7 +200,32 @@ a {
   }
 }
 
-.arrow-to-top {
+.scroll-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   background-color: var(--accent-color);
   border-radius: 50%;
+  padding: 10px;
+
+  svg {
+    fill: white;
+    width: 14px;
+    height: 14px;
+  }
+
+  &:hover {
+    background-color: #5f6560;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 15px;
+
+    svg {
+      fill: white;
+      width: 23px;
+      height: 23px;
+    }
+  }
 }

@@ -12,4 +12,5 @@ export const refs = {
   quoteWrapper: document.querySelector('.quote-wrapper'),
   footerForm: document.querySelector('.footer-form'),
   filterList: document.querySelector('.filter-list'),
+  scrollToTop: document.querySelector('.scroll-to-top'),
 };
