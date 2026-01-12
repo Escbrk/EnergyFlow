@@ -62,6 +62,7 @@
   margin-top: 12px;
   padding: 12px 130px;
   width: 100%;
+  transition: background-color linear 250ms;
 
   &:hover {
     background-color: #5f6560;

@@ -148,6 +148,7 @@
   font-size: 14px;
   line-height: 1.29;
   justify-content: center;
+  transition: background-color linear 250ms;
 
   svg {
     width: 18px;
@@ -182,6 +183,8 @@
   outline: 1px solid #1b1b1b;
   padding: 12px 105px;
   line-height: 1.29;
+
+  transition: color linear 250ms, outline linear 250ms;
 
   &:hover {
     color: var(--accent-color);

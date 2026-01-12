@@ -27,11 +27,15 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.29;
-
   padding: 7px 14px;
   border-radius: 30px;
   background: #f6f6f6;
   border: none;
+  transition: scale linear 250ms;
+
+  &:hover {
+    scale: 1.05;
+  }
 }
 
 .filter-item .active {
@@ -54,7 +58,6 @@
       rgba(16, 16, 16, 0.7) 100%
     ),
     var(--img) lightgray -16.825px 0.844px / 121.36% 108.504% no-repeat;
-
   transition: scale linear 250ms;
 
   &:hover {

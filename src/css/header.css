@@ -200,6 +200,7 @@
   .header-social {
     .social-item {
       border: 1px solid rgba(126, 132, 127, 0.2);
+      transition: border linear 250ms;
 
       &:hover {
         border: 1px solid rgba(95, 101, 96, 0.2);
@@ -212,6 +213,7 @@
 
     .social-icon {
       fill: var(--accent-color);
+      transition: fill linear 250ms;
     }
   }
 }
