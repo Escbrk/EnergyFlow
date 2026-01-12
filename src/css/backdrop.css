@@ -157,7 +157,8 @@
     stroke: var(--bg-color);
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #5f6560;
   }
 }
@@ -186,7 +187,8 @@
 
   transition: color linear 250ms, outline linear 250ms;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--accent-color);
     outline: 1px solid var(--accent-color);
   }

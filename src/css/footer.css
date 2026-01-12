@@ -48,6 +48,10 @@
   color: rgba(246, 246, 246, 0.6);
   line-height: 1.5;
   width: 100%;
+
+  &:focus {
+    outline: 0.8px solid white;
+  }
 }
 
 .form-btn {
@@ -64,7 +68,8 @@
   width: 100%;
   transition: background-color linear 250ms;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #5f6560;
   }
 }
@@ -111,8 +116,24 @@
   margin-top: 10px;
   margin-bottom: 40px;
 
+  .social-item {
+    border: 1px solid rgba(126, 132, 127, 0.2);
+    transition: border-color linear 250ms;
+
+    &:hover,
+    &:focus-within {
+      border-color: rgba(95, 101, 96, 0.2);
+    }
+
+    &:hover .social-icon,
+    &:focus-within .social-icon {
+      fill: var(--accent-color);
+    }
+  }
+
   .social-icon {
     fill: var(--bg-color);
+    transition: fill linear 250ms;
   }
 }
 

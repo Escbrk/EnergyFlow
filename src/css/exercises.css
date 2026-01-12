@@ -33,7 +33,8 @@
   border: none;
   transition: scale linear 250ms;
 
-  &:hover {
+  &:hover,
+  &:focus {
     scale: 1.05;
   }
 }
@@ -60,7 +61,8 @@
     var(--img) lightgray -16.825px 0.844px / 121.36% 108.504% no-repeat;
   transition: scale linear 250ms;
 
-  &:hover {
+  &:hover,
+  &:focus {
     scale: 1.05;
   }
 }

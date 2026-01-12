@@ -216,7 +216,8 @@ a {
     height: 14px;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #5f6560;
   }
 
