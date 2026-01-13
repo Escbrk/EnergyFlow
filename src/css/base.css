@@ -208,6 +208,7 @@ a {
   background-color: var(--accent-color);
   border-radius: 50%;
   padding: 10px;
+  opacity: 0.8;
   transition: background-color linear 250ms;
 
   svg {
