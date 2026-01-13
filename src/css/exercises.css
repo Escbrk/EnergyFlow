@@ -20,7 +20,7 @@
   margin-bottom: 20px;
 }
 
-.filter-item button {
+.filter-btn {
   color: #1b1b1b;
   font-family: 'DM Sans';
   font-size: 14px;
@@ -33,9 +33,18 @@
   border: none;
   transition: scale linear 250ms;
 
+  &.active {
+    cursor: not-allowed;
+  }
+
   &:hover,
   &:focus {
     scale: 1.05;
+  }
+
+  &:hover.active,
+  &:focus.active {
+    scale: 1;
   }
 }
 
@@ -322,7 +331,7 @@
     margin-bottom: 0;
   }
 
-  .filter-item button {
+  .filter-btn {
     font-size: 16px;
     line-height: 1.5;
     padding: 10px 20px;

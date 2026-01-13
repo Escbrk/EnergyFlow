@@ -247,6 +247,11 @@
   color: var(--bg-color);
   font-size: 14px;
   line-height: 1.29;
+  transition: background-color linear 250ms;
+
+  &:hover {
+    background-color: #5f6560;
+  }
 }
 
 .rating-email-input,

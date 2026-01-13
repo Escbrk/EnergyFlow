@@ -9,6 +9,7 @@ import { sendRating } from '../api.js';
 import { backToExercise } from './backToExercise.js';
 import { closeAllModals } from './closeAllModals.js';
 import { emailChecker } from './emailChecker.js';
+import { localDataPagination } from './localDataPagination.js';
 
 refs.backdrop.addEventListener('click', async e => {
   const closeModalBtn = e.target.closest('.close-modal-btn');
@@ -18,14 +19,14 @@ refs.backdrop.addEventListener('click', async e => {
   const ratingSubmitBtn = e.target.closest('.ratingSubmitBtn');
   let id = e.target.closest('.modal-window')?.dataset.id;
 
-  const savedData = JSON.parse(localStorage.getItem('favorites')) || [];
-
   if (favoritesBtn) {
     const action = favoritesBtn.dataset.action;
 
     switch (action) {
       case 'add':
-        const exist = savedData.some(({ _id }) => _id === globalState.data._id);
+        const exist = globalState.savedData.some(
+          ({ _id }) => _id === globalState.data._id
+        );
 
         if (exist) {
           iziToast.warning({
@@ -35,8 +36,11 @@ refs.backdrop.addEventListener('click', async e => {
           return;
         }
 
-        savedData.push(globalState.data);
-        localStorage.setItem('favorites', JSON.stringify(savedData));
+        globalState.savedData.push(globalState.data);
+        localStorage.setItem(
+          'favorites',
+          JSON.stringify(globalState.savedData)
+        );
         iziToast.success({
           title: 'Succes',
           message: 'Succesfully added to your favorite list',
@@ -47,7 +51,7 @@ refs.backdrop.addEventListener('click', async e => {
         const id = e.target.closest('.modal-window').dataset.id;
 
         deleteItem(id);
-        renderLocalData();
+        renderLocalData(localDataPagination(globalState.activeLocalPage));
         closeAllModals();
         break;
     }

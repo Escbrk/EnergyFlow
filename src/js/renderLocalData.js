@@ -5,8 +5,6 @@ import { globalState } from './globalState.js';
 import { renderExercise, renderInfo } from './exercises.js';
 import { setActivePage } from './activePage';
 
-let activePage = 1;
-
 export const renderLocalData = localData => {
   const markup = localData
     .map(({ name, bodyPart, burnedCalories, time, target, _id }) => {
@@ -44,12 +42,12 @@ export const renderLocalData = localData => {
   if (refs.favList) {
     refs.favList.innerHTML = markup;
     refs.emptyWrapper.style.display = localData.length === 0 ? 'flex' : 'none';
-    setActivePage(activePage);
+    setActivePage(globalState.activeLocalPage);
   }
 };
 
 if (globalState.currentPage !== 'index.html') {
-  renderLocalData(localDataPagination(activePage));
+  renderLocalData(localDataPagination(globalState.activeLocalPage));
 }
 
 refs.pagination.addEventListener('click', e => {

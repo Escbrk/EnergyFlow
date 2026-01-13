@@ -1,4 +1,6 @@
+import { globalState } from './globalState.js';
 import { deleteItem } from './handlers/deleteHandler.js';
+import { localDataPagination } from './handlers/localDataPagination.js';
 import { renderExerciseById } from './modal.js';
 import { refs } from './refs.js';
 import { renderLocalData } from './renderLocalData.js';
@@ -15,6 +17,6 @@ refs.favList.addEventListener('click', e => {
 
   if (deleteBtn) {
     deleteItem(id);
-    renderLocalData();
+    renderLocalData(localDataPagination(globalState.activeLocalPage));
   }
 });
