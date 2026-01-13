@@ -195,4 +195,4 @@ if(r<s-1){c.push(s);//! Last page
       </div>
     </div>
   `;i.backdrop.querySelector(".exercise").innerHTML=v,i.backdrop.classList.remove("hidden"),document.body.classList.add("noScroll")}catch{f.error({title:"Error",message:"Failed to fetch current exercise"}),setTimeout(()=>{i.backdrop.classList.add("hidden")},0)}};export{i as a,A as b,U as c,_ as d,w as e,R as f,l as g,E as h,$ as l,W as r,j as s};
-//# sourceMappingURL=modal-CUKTS1nV.js.map
+//# sourceMappingURL=modal-CIkBAFzJ.js.map
