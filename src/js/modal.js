@@ -32,21 +32,8 @@ export const renderExerciseById = async (id, type) => {
 
     const formattedRating = String(rating.toFixed(1));
 
-    const favBtn =
-      type === 'available'
-        ? `
-            <button type="button" class="favorite-btn" data-action="add">
-              Add to favorites
-              <svg>
-                <use href="${spritePath}#icon-heart"></use>
-              </svg>
-            </button>`
-        : `<button type="button" class="favorite-btn" data-action="delete">
-              Remove from
-              <svg>
-                <use href="${spritePath}#icon-heart"></use>
-              </svg>
-            </button>`;
+    const favBtnText =
+      type === 'available' ? 'Add to favorites' : 'Remove from';
 
     const markup = `
     <div class="modal-window" data-id="${_id}" >
@@ -101,7 +88,12 @@ export const renderExerciseById = async (id, type) => {
 
         <ul class="btns-list">
           <li>
-          ${favBtn}
+          <button type="button" class="favorite-btn" data-action="add">
+              ${favBtnText}
+              <svg>
+                <use href="${spritePath}#icon-heart"></use>
+              </svg>
+            </button>
           </li>
           <li>
             <button type="button" class="rating-btn">Give a rating</button>
